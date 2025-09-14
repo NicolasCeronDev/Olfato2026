@@ -1,7 +1,10 @@
 // Variables globales del carrito
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-// Elementos del DOM del carrito
+// Elementos del DOM del carrito Y menú móvil
+const botonMenuMovil = document.getElementById('boton-menu-movil');
+const menuPrincipal = document.getElementById('menu-principal');
+const overlayMenu = document.getElementById('overlay-menu');
 const botonCarrito = document.getElementById('boton-carrito');
 const carritoElement = document.getElementById('carrito');
 const overlayCarrito = document.getElementById('overlay-carrito');
@@ -12,19 +15,53 @@ const descuentoCarrito = document.getElementById('descuento-carrito');
 const totalCarrito = document.getElementById('total-carrito');
 const botonPago = document.getElementById('boton-pago');
 
-// Inicialización del carrito
+// Inicialización del carrito Y menú móvil
 document.addEventListener('DOMContentLoaded', function () {
     actualizarContadorCarrito();
     renderizarCarrito();
 
-    // Event listeners del carrito
+    // Event listeners del carrito Y menú móvil
+    botonMenuMovil.addEventListener('click', toggleMenuMovil);
+    overlayMenu.addEventListener('click', cerrarMenuMovil);
     botonCarrito.addEventListener('click', abrirCarrito);
     overlayCarrito.addEventListener('click', cerrarCarritoFunc);
     cerrarCarrito.addEventListener('click', cerrarCarritoFunc);
     botonPago.addEventListener('click', finalizarCompra);
+    
+    // Cerrar menú al hacer clic en un enlace (solo móvil)
+    const enlacesMenu = document.querySelectorAll('.menu-enlace');
+    enlacesMenu.forEach(enlace => {
+        enlace.addEventListener('click', cerrarMenuMovil);
+    });
 });
 
-// Funciones del carrito
+// ===== FUNCIONES DEL MENÚ MÓVIL =====
+function toggleMenuMovil() {
+    menuPrincipal.classList.toggle('activo');
+    overlayMenu.classList.toggle('activo');
+    botonMenuMovil.classList.toggle('activo');
+    
+    if (menuPrincipal.classList.contains('activo')) {
+        document.body.style.overflow = 'hidden';
+        botonMenuMovil.innerHTML = '<i class="fas fa-times"></i>';
+        botonMenuMovil.setAttribute('aria-label', 'Cerrar menú');
+    } else {
+        document.body.style.overflow = 'auto';
+        botonMenuMovil.innerHTML = '<i class="fas fa-bars"></i>';
+        botonMenuMovil.setAttribute('aria-label', 'Abrir menú');
+    }
+}
+
+function cerrarMenuMovil() {
+    menuPrincipal.classList.remove('activo');
+    overlayMenu.classList.remove('activo');
+    botonMenuMovil.classList.remove('activo');
+    document.body.style.overflow = 'auto';
+    botonMenuMovil.innerHTML = '<i class="fas fa-bars"></i>';
+    botonMenuMovil.setAttribute('aria-label', 'Abrir menú');
+}
+
+// ===== FUNCIONES DEL CARRITO =====
 function abrirCarrito() {
     carritoElement.classList.add('activo');
     overlayCarrito.classList.add('activo');
@@ -128,6 +165,13 @@ function finalizarCompra() {
     }
 }
 
-// Funciones globales para los botones onclick
+// Cerrar menú móvil al redimensionar la ventana si se hace más grande
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768 && menuPrincipal.classList.contains('activo')) {
+        cerrarMenuMovil();
+    }
+});
+
+// Exponer funciones globales para los botones onclick
 window.cambiarCantidadCarrito = cambiarCantidadCarrito;
 window.eliminarItemCarrito = eliminarItemCarrito;

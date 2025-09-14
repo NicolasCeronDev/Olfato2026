@@ -57,6 +57,8 @@
             </button>
         </div>
     </header>
+    
+    <div class="overlay-menu" id="overlay-menu"></div> <!-- Overlay para el menú móvil -->
 
     <!-- Overlay para el carrito -->
     <div class="carrito-overlay" id="overlay-carrito"></div>
