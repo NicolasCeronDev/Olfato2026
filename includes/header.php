@@ -100,8 +100,6 @@
             </a>
         </div>
     </div>
-
-    <!-- Script para funcionalidad del carrito -->
-    <script src="/assets/js/carrito.js"></script>
 </body>
-</html>
+<!-- Script para funcionalidad del carrito -->
+<script src="/assets/js/carrito.js"></script>
