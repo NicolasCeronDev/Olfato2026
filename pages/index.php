@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap">
-    <link rel="stylesheet" href="/assets/css/General.css">
+    <link rel="stylesheet" href="../assets/css/General.css">
 </head>
 
 <body>
@@ -370,128 +370,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Sección Emprende -->
-        <section id="emprende" class="seccion emprende">
-            <div class="contenedor">
-                <div class="titulo-seccion">
-                    <h2>EMPRENDE CON NOSOTROS</h2>
-                    <div class="separador"></div>
-                    <p>Únete a nuestra red de distribuidores y comienza tu propio negocio con Olfato Perfumería.</p>
-                </div>
-
-                <div class="emprende-contenido">
-                    <div class="emprende-info">
-                        <h3 class="emprende-titulo">Oportunidad de Negocio</h3>
-                        <p>Ofrecemos un modelo de negocio probado con márgenes atractivos, capacitación completa y apoyo
-                            continuo para que puedas emprender con éxito en el mundo de la perfumería.</p>
-
-                        <ul class="emprende-lista">
-                            <li class="emprende-item">
-                                <i class="fas fa-check emprende-icono"></i>
-                                <span>Márgenes de ganancia de hasta el 50%</span>
-                            </li>
-                            <li class="emprende-item">
-                                <i class="fas fa-check emprende-icono"></i>
-                                <span>Productos de alta calidad y exclusivos</span>
-                            </li>
-                            <li class="emprende-item">
-                                <i class="fas fa-check emprende-icono"></i>
-                                <span>Capacitación en ventas y marketing</span>
-                            </li>
-                            <li class="emprende-item">
-                                <i class="fas fa-check emprende-icono"></i>
-                                <span>Soporte continuo y material promocional</span>
-                            </li>
-                        </ul>
-
-                        <a href="#contacto" class="boton">QUIERO MÁS INFORMACIÓN</a>
-                    </div>
-
-                    <div class="emprende-imagen-contenedor">
-                        <img src="/assets/Contenido/Local/NuestroLocal.png"
-                            alt="Emprende con Olfato" class="emprende-imagen">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección Contacto -->
-        <section id="contacto" class="seccion contacto">
-            <div class="contenedor">
-                <div class="titulo-seccion">
-                    <h2>CONTÁCTANOS</h2>
-                    <div class="separador"></div>
-                    <p>Estamos aquí para responder tus preguntas y ayudarte a encontrar la fragancia perfecta.</p>
-                </div>
-
-                <div class="contacto-contenido">
-                    <div>
-                        <form id="formulario-contacto" class="formulario">
-                            <div class="formulario-grupo doble">
-                                <div>
-                                    <label for="nombre" class="formulario-etiqueta">Nombre</label>
-                                    <input type="text" id="nombre" name="nombre" class="formulario-control" required>
-                                </div>
-                                <div>
-                                    <label for="email" class="formulario-etiqueta">Email</label>
-                                    <input type="email" id="email" name="email" class="formulario-control" required>
-                                </div>
-                            </div>
-
-                            <div class="formulario-grupo">
-                                <label for="asunto" class="formulario-etiqueta">Asunto</label>
-                                <input type="text" id="asunto" name="asunto" class="formulario-control" required>
-                            </div>
-
-                            <div class="formulario-grupo">
-                                <label for="mensaje" class="formulario-etiqueta">Mensaje</label>
-                                <textarea id="mensaje" name="mensaje" class="formulario-control" required></textarea>
-                            </div>
-
-                            <button type="submit" class="boton ancho-completo">ENVIAR MENSAJE</button>
-                        </form>
-
-                        <div class="contacto-info">
-                            <div class="contacto-item">
-                                <div class="contacto-icono">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div>
-                                    <h4>Ubicación</h4>
-                                    <p>Cl. 66 #1b-67, Neiva</p>
-                                </div>
-                            </div>
-
-                            <div class="contacto-item">
-                                <div class="contacto-icono">
-                                    <i class="fas fa-phone-alt"></i>
-                                </div>
-                                <div>
-                                    <h4>Teléfono</h4>
-                                    <p>+57 (316) 4238 5351</p>
-                                </div>
-                            </div>
-
-                            <div class="contacto-item">
-                                <div class="contacto-icono">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div>
-                                    <h4>Email</h4>
-                                    <p>Olfato@PerfumeriaColombia.com</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mapa">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3984.480257372606!2d-75.294128!3d2.964158!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3b75a9d99e0c2b%3A0x7c0674a5466b3c08!2sCl.%2066%20%231b-67%2C%20Neiva%2C%20Huila!5e0!3m2!1ses!2sco!4v1758499546789!5m2!1ses!2sco" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <?php
@@ -506,8 +384,8 @@
         this.reset();
     });
 </script>
-<script src="/assets/js/presentaciones.js"></script>
-<script src="/assets/js/productos.js"></script>
-<script src="/assets/js/sliderNotas.js"></script>
+<script src="../assets/js/presentaciones.js"></script>
+<script src="../assets/js/productos.js"></script>
+<script src="../assets/js/sliderNotas.js"></script>
 
 </html>

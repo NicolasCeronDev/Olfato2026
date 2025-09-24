@@ -28,12 +28,12 @@
             <!-- Navegación principal -->
             <nav class="navegacion">
                 <ul class="menu" id="menu-principal">
-                    <li class="menu-item"><a href="#inicio" class="menu-enlace">Inicio</a></li>
-                    <li class="menu-item"><a href="#productos" class="menu-enlace">Productos</a></li>
-                    <li class="menu-item"><a href="#presentaciones" class="menu-enlace">Presentaciones</a></li>
-                    <li class="menu-item"><a href="#notas" class="menu-enlace">Notas Olfativas</a></li>
-                    <li class="menu-item"><a href="#emprende" class="menu-enlace">Emprende</a></li>
-                    <li class="menu-item"><a href="#contacto" class="menu-enlace">Contacto</a></li>
+                    <li class="menu-item"><a href="/pages/index.php#inicio" class="menu-enlace">Inicio</a></li>
+                    <li class="menu-item"><a href="/pages/productos.php" class="menu-enlace">Productos</a></li>
+                    <li class="menu-item"><a href="/pages/index.php#presentaciones" class="menu-enlace">Presentaciones</a></li>
+                    <li class="menu-item"><a href="/pages/index.php#notas" class="menu-enlace">Notas</a></li>
+                    <li class="menu-item"><a href="/pages/emprende.php" class="menu-enlace">Emprende</a></li>
+                    <li class="menu-item"><a href="/pages/contacto.php" class="menu-enlace">Contacto</a></li>
                     
                     <!-- Botones de usuario y carrito - ESTILOS UNIFICADOS -->
                     <li class="menu-item menu-item-botones">
