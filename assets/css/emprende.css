@@ -1,0 +1,58 @@
+/* Emprende */
+
+.emprende {
+    background-color: var(--color-gris-oscuro);
+    margin-top: 180px;
+}
+
+.emprende-contenido {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.emprende-info {
+    padding-right: 20px;
+}
+
+.emprende-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--color-dorado);
+    margin-bottom: 20px;
+}
+
+.emprende-lista {
+    list-style: none;
+    margin: 25px 0;
+}
+
+.emprende-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.emprende-icono {
+    color: var(--color-dorado);
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.emprende-imagen-contenedor {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--color-borde);
+}
+
+.emprende-imagen {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: var(--transicion);
+}
+
+.emprende-imagen:hover {
+    transform: scale(1.05);
+}
