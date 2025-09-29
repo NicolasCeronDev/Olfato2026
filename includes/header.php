@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Hojas de estilo -->
-    <link rel="stylesheet" href="/assets/css/general.css">          <!-- Estilos globales -->
-    <link rel="stylesheet" href="/assets/css/componentes/header.css"><!-- Estilos del header -->
+    <link rel="stylesheet" href="../assets/css/general.css">          <!-- Estilos globales -->
+    <link rel="stylesheet" href="../assets/css/componentes/header.css"><!-- Estilos del header -->
 </head>
 
 <body>
@@ -22,18 +22,18 @@
         <div class="contenedor cabecera-contenido">
             <!-- Logo con imagen -->
             <div class="logo">
-                <img src="/assets/Contenido/Local/LogoSinfondo.png" alt="Olfato Perfumería" class="logo-imagen">
+                <img src="../assets/Contenido/Local/LogoSinfondo.png" alt="Olfato Perfumería" class="logo-imagen">
             </div>
 
             <!-- Navegación principal -->
             <nav class="navegacion">
                 <ul class="menu" id="menu-principal">
-                    <li class="menu-item"><a href="/pages/index.php#inicio" class="menu-enlace">Inicio</a></li>
-                    <li class="menu-item"><a href="/pages/productos.php" class="menu-enlace">Productos</a></li>
-                    <li class="menu-item"><a href="/pages/index.php#presentaciones" class="menu-enlace">Presentaciones</a></li>
-                    <li class="menu-item"><a href="/pages/index.php#notas" class="menu-enlace">Notas</a></li>
-                    <li class="menu-item"><a href="/pages/emprende.php" class="menu-enlace">Emprende</a></li>
-                    <li class="menu-item"><a href="/pages/contacto.php" class="menu-enlace">Contacto</a></li>
+                    <li class="menu-item"><a href="../pages/index.php#inicio" class="menu-enlace">Inicio</a></li>
+                    <li class="menu-item"><a href="../pages/productos.php" class="menu-enlace">Productos</a></li>
+                    <li class="menu-item"><a href="../pages/index.php#presentaciones" class="menu-enlace">Presentaciones</a></li>
+                    <li class="menu-item"><a href="../pages/index.php#notas" class="menu-enlace">Notas</a></li>
+                    <li class="menu-item"><a href="../pages/emprende.php" class="menu-enlace">Emprende</a></li>
+                    <li class="menu-item"><a href="../pages/contacto.php" class="menu-enlace">Contacto</a></li>
                     
                     <!-- Botones de usuario y carrito - ESTILOS UNIFICADOS -->
                     <li class="menu-item menu-item-botones">
@@ -102,4 +102,4 @@
     </div>
 </body>
 <!-- Script para funcionalidad del carrito -->
-<script src="/assets/js/carrito.js"></script>
+<script src="../assets/js/carrito.js"></script>
