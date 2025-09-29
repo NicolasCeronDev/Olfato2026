@@ -108,7 +108,7 @@
 
                 <!-- Botón para ver más productos -->
                 <div class="texto-centrado">
-                    <a href="productos.php" class="boton boton-secundario">VER TODOS LOS PRODUCTOS</a>
+                    <a href="../pages/productos.php" class="boton boton-secundario">VER TODOS LOS PRODUCTOS</a>
                 </div>
             </div>
         </section>
@@ -128,7 +128,7 @@
                     <!-- Presentación 30ml -->
                     <div class="presentacion-tarjeta">
                         <div class="presentacion-imagen-contenedor">
-                            <img src="/assets/Contenido/Presentaciones/30ml/Default.png"
+                            <img src="../assets/Contenido/Presentaciones/30ml/Default.png"
                                 alt="Botella 30ml" class="presentacion-imagen" id="imagen-30ml">
                         </div>
                         <div class="presentacion-info">
@@ -155,7 +155,7 @@
                     <!-- Presentación 60ml -->
                     <div class="presentacion-tarjeta">
                         <div class="presentacion-imagen-contenedor">
-                            <img src="/assets/Contenido/Presentaciones/60ml/Default.png"
+                            <img src="../assets/Contenido/Presentaciones/60ml/Default.png"
                                 alt="Botella 60ml" class="presentacion-imagen" id="imagen-60ml">
                         </div>
                         <div class="presentacion-info">
@@ -182,7 +182,7 @@
                     <!-- Presentación 100ml -->
                     <div class="presentacion-tarjeta">
                         <div class="presentacion-imagen-contenedor">
-                            <img src="/assets/Contenido/Presentaciones/100ml/Default.png"
+                            <img src="../assets/Contenido/Presentaciones/100ml/Default.png"
                                 alt="Botella 100ml" class="presentacion-imagen" id="imagen-100ml">
                         </div>
                         <div class="presentacion-info">
@@ -224,7 +224,7 @@
                     <div class="tiktok-tarjeta">
                         <a href="https://www.tiktok.com/@olfato.perfumeria/video/7475009051051527429" target="_blank" class="tiktok-link">
                             <div class="tiktok-video-container">
-                                <img src="/assets/Contenido/TikToks/TikTok1.png" alt="TikTok Olfato Perfumería" class="tiktok-video-thumbnail">
+                                <img src="../assets/Contenido/TikToks/TikTok1.png" alt="TikTok Olfato Perfumería" class="tiktok-video-thumbnail">
                                 <div class="tiktok-play-button">
                                     <i class="fab fa-tiktok"></i>
                                 </div>
@@ -239,7 +239,7 @@
                     <div class="tiktok-tarjeta">
                         <a href="https://www.tiktok.com/@olfato.perfumeria/video/7529588807864274181" target="_blank" class="tiktok-link">
                             <div class="tiktok-video-container">
-                                <img src="/assets/Contenido/TikToks/TikTok2.png" alt="TikTok Olfato Perfumería" class="tiktok-video-thumbnail">
+                                <img src="../assets/Contenido/TikToks/TikTok2.png" alt="TikTok Olfato Perfumería" class="tiktok-video-thumbnail">
                                 <div class="tiktok-play-button">
                                     <i class="fab fa-tiktok"></i>
                                 </div>
@@ -254,7 +254,7 @@
                     <div class="tiktok-tarjeta">
                         <a href="https://www.tiktok.com/@olfato.perfumeria/video/7496549061089135927" target="_blank" class="tiktok-link">
                             <div class="tiktok-video-container">
-                                <img src="/assets/Contenido/TikToks/TikTok3.png" alt="TikTok Olfato Perfumería" class="tiktok-video-thumbnail">
+                                <img src="../assets/Contenido/TikToks/TikTok3.png" alt="TikTok Olfato Perfumería" class="tiktok-video-thumbnail">
                                 <div class="tiktok-play-button">
                                     <i class="fab fa-tiktok"></i>
                                 </div>
@@ -269,7 +269,7 @@
                     <div class="tiktok-tarjeta">
                         <a href="https://www.tiktok.com/@olfato.perfumeria/video/7485848426782018871" target="_blank" class="tiktok-link">
                             <div class="tiktok-video-container">
-                                <img src="/assets/Contenido/TikToks/TikTok4.png" alt="TikTok Olfato Perfumería" class="tiktok-video-thumbnail">
+                                <img src="../assets/Contenido/TikToks/TikTok4.png" alt="TikTok Olfato Perfumería" class="tiktok-video-thumbnail">
                                 <div class="tiktok-play-button">
                                     <i class="fab fa-tiktok"></i>
                                 </div>
@@ -303,7 +303,7 @@
                         <!-- Slide 1 - Notas de salida -->
                         <div class="slide">
                             <div class="slide-imagen">
-                                <img src="/assets/Contenido/Notas/NotasSalida.png" alt="Notas de salida">
+                                <img src="../assets/Contenido/Notas/NotasSalida.png" alt="Notas de salida">
                             </div>
                             <div class="slide-contenido">
                                 <h3 class="slide-titulo">Notas de Salida</h3>
@@ -319,7 +319,7 @@
                         <!-- Slide 2 - Notas de corazón -->
                         <div class="slide">
                             <div class="slide-imagen">
-                                <img src="/assets/Contenido/Notas/NotasCorazon.png" alt="Notas de corazón">
+                                <img src="../assets/Contenido/Notas/NotasCorazon.png" alt="Notas de corazón">
                             </div>
                             <div class="slide-contenido">
                                 <h3 class="slide-titulo">Notas de Corazón</h3>
@@ -335,7 +335,7 @@
                         <!-- Slide 3 - Notas de fondo -->
                         <div class="slide">
                             <div class="slide-imagen">
-                                <img src="/assets/Contenido/Notas/NotasFondo.png" alt="Notas de fondo">
+                                <img src="../assets/Contenido/Notas/NotasFondo.png" alt="Notas de fondo">
                             </div>
                             <div class="slide-contenido">
                                 <h3 class="slide-titulo">Notas de Fondo</h3>

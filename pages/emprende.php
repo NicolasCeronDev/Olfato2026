@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="emprende-imagen-contenedor">
-                        <img src="/assets/Contenido/Local/NuestroLocal.png"
+                        <img src="../assets/Contenido/Local/NuestroLocal.png"
                             alt="Emprende con Olfato" class="emprende-imagen">
                     </div>
                 </div>

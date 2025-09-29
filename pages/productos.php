@@ -38,7 +38,7 @@
         <div class="secciones-categorias">
             <!-- Sección Hombre -->
             <div class="categoria-seccion" data-categoria="hombre">
-                <img src="/assets/Contenido/Perfumes/CategoriasFondos/ParaEllos.jpg" 
+                <img src="../assets/Contenido/Perfumes/CategoriasFondos/ParaEllos.jpg" 
                      alt="Perfumes Hombre" class="categoria-imagen">
                 <div class="categoria-overlay">
                     <div class="categoria-contenido">
@@ -50,7 +50,7 @@
 
             <!-- Sección Mujer -->
             <div class="categoria-seccion" data-categoria="mujer">
-                <img src="/assets/Contenido/Perfumes/CategoriasFondos/ParaEllas.jpg" 
+                <img src="../assets/Contenido/Perfumes/CategoriasFondos/ParaEllas.jpg" 
                      alt="Perfumes Mujer" class="categoria-imagen">
                 <div class="categoria-overlay">
                     <div class="categoria-contenido">
@@ -62,7 +62,7 @@
 
             <!-- Sección Árabes -->
             <div class="categoria-seccion" data-categoria="arabes">
-                <img src="/assets/Contenido/Perfumes/CategoriasFondos/Arabes.jpg" 
+                <img src="../assets/Contenido/Perfumes/CategoriasFondos/Arabes.jpg" 
                      alt="Perfumes Árabes" class="categoria-imagen">
                 <div class="categoria-overlay">
                     <div class="categoria-contenido">
@@ -74,7 +74,7 @@
 
             <!-- Sección Unisex -->
             <div class="categoria-seccion" data-categoria="unisex">
-                <img src="/assets/Contenido/Perfumes/CategoriasFondos/Unisex-.jpg" 
+                <img src="../assets/Contenido/Perfumes/CategoriasFondos/Unisex-.jpg" 
                      alt="Fragancias Unisex" class="categoria-imagen">
                 <div class="categoria-overlay">
                     <div class="categoria-contenido">
