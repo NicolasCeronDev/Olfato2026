@@ -12,6 +12,9 @@ include '../includes/DB/conexion_db.php';
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap">
     <link rel="stylesheet" href="../assets/css/General.css">
     <link rel="stylesheet" href="../assets/css/productos.css">
+    <link rel="stylesheet" href="../assets/css/Componentes/productos_componente.css">
+
+
 </head>
 
 <body>
@@ -31,8 +34,8 @@ include '../includes/DB/conexion_db.php';
         <div class="secciones-categorias">
             <!-- Sección Hombre -->
             <div class="categoria-seccion" data-categoria="hombre">
-                <img src="../assets/Contenido/Perfumes/CategoriasFondos/ParaEllos.jpg" 
-                     alt="Perfumes Hombre" class="categoria-imagen">
+                <img src="../assets/Contenido/Perfumes/CategoriasFondos/ParaEllos.jpg"
+                    alt="Perfumes Hombre" class="categoria-imagen">
                 <div class="categoria-overlay">
                     <div class="categoria-contenido">
                         <h2 class="categoria-titulo">PARA HOMBRE</h2>
@@ -43,8 +46,8 @@ include '../includes/DB/conexion_db.php';
 
             <!-- Sección Mujer -->
             <div class="categoria-seccion" data-categoria="mujer">
-                <img src="../assets/Contenido/Perfumes/CategoriasFondos/ParaEllas.jpg" 
-                     alt="Perfumes Mujer" class="categoria-imagen">
+                <img src="../assets/Contenido/Perfumes/CategoriasFondos/ParaEllas.jpg"
+                    alt="Perfumes Mujer" class="categoria-imagen">
                 <div class="categoria-overlay">
                     <div class="categoria-contenido">
                         <h2 class="categoria-titulo">PARA MUJER</h2>
@@ -55,8 +58,8 @@ include '../includes/DB/conexion_db.php';
 
             <!-- Sección Árabes -->
             <div class="categoria-seccion" data-categoria="arabes">
-                <img src="../assets/Contenido/Perfumes/CategoriasFondos/Arabes.jpg" 
-                     alt="Perfumes Árabes" class="categoria-imagen">
+                <img src="../assets/Contenido/Perfumes/CategoriasFondos/Arabes.jpg"
+                    alt="Perfumes Árabes" class="categoria-imagen">
                 <div class="categoria-overlay">
                     <div class="categoria-contenido">
                         <h2 class="categoria-titulo">PERFUMES ÁRABES</h2>
@@ -67,8 +70,8 @@ include '../includes/DB/conexion_db.php';
 
             <!-- Sección Unisex -->
             <div class="categoria-seccion" data-categoria="unisex">
-                <img src="../assets/Contenido/Perfumes/CategoriasFondos/Unisex-.jpg" 
-                     alt="Fragancias Unisex" class="categoria-imagen">
+                <img src="../assets/Contenido/Perfumes/CategoriasFondos/Unisex-.jpg"
+                    alt="Fragancias Unisex" class="categoria-imagen">
                 <div class="categoria-overlay">
                     <div class="categoria-contenido">
                         <h2 class="categoria-titulo">UNISEX</h2>
@@ -79,19 +82,61 @@ include '../includes/DB/conexion_db.php';
         </div>
     </div>
 
-    <!-- Layout principal -->
-    <main class="contenedor">
-        <div class="productos-layout">
-                <!-- Mensaje de productos (los productos vendrán del backend) -->
-                <div class="mensaje-productos">
-                    <i class="fas fa-cube"></i>
-                    <h3>Productos Cargados desde el Backend</h3>
-                    <p>Aquí se mostrarán todos los productos filtrados según tu selección.<br>
-                    La información se cargará dinámicamente desde la base de datos.</p>
-                </div>
-            </section>
+    <!-- Sección: OFERTAS ESPECIALES -->
+    <section class="seccion productos-ofertas" style="background-color: var(--color-gris-oscuro);">
+        <div class="contenedor">
+            <div class="titulo-seccion">
+                <h2><i class="fas fa-tag" style="color: var(--color-ofertas);"></i> OFERTAS ESPECIALES</h2>
+                <div class="separador"></div>
+                <p>Aprovecha nuestros descuentos exclusivos. Calidad premium a precios irresistibles.</p>
+            </div>
+
+            <div id="contenedor-ofertas">
+                <?php
+                include '../includes/DB/productos_componente.php';
+                // Mostramos solo productos con ofertas
+                mostrarProductos('todos', 6, 'ofertas', true);
+                ?>
+            </div>
         </div>
-    </main>
+    </section>
+
+     <!-- Sección: NUEVAS FRAGANCIAS -->
+    <section class="seccion productos-nuevos" style="background-color: var(--color-fondo);">
+        <div class="contenedor">
+            <div class="titulo-seccion">
+                <h2><i class="fas fa-star" style="color: var(--color-dorado);"></i> NUEVOS LANZAMIENTOS</h2>
+                <div class="separador"></div>
+                <p>Descubre nuestras últimas incorporaciones. Fragancias frescas y innovadoras que marcan tendencia.</p>
+            </div>
+
+            <div id="contenedor-nuevos">
+                <?php
+                // Mostramos los productos más recientes
+                mostrarProductos('todos', 6, 'nuevos', false);
+                ?>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sección: LOS MÁS VENDIDOS -->
+    <section class="seccion productos-destacados" style="background-color: var(--color-gris-oscuro);">
+        <div class="contenedor">
+            <div class="titulo-seccion">
+                <h2><i class="fas fa-crown" style="color: var(--color-dorado);"></i> LOS MÁS VENDIDOS</h2>
+                <div class="separador"></div>
+                <p>Las fragancias que han conquistado a nuestros clientes. Clásicos que nunca pasan de moda.</p>
+            </div>
+
+            <div id="contenedor-mas-vendidos">
+                <?php
+                // Por ahora mostramos los más antiguos como "más vendidos"
+                mostrarProductos('todos', 6, 'vendidos', false);
+                ?>
+            </div>
+        </div>
+    </section>
+
     <?php
     include '../includes/footer.php';
     ?>
