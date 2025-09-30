@@ -1,57 +1,362 @@
-/* Emprende */
-
-.emprende {
-    background-color: var(--color-gris-oscuro);
-}
-
-.emprende-contenido {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-}
-
-.emprende-info {
-    padding-right: 20px;
-}
-
-.emprende-titulo {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    color: var(--color-dorado);
-    margin-bottom: 20px;
-}
-
-.emprende-lista {
-    list-style: none;
-    margin: 25px 0;
-}
-
-.emprende-item {
+/* Hero Section (Emprende con Nosotros) */
+.hero {
+    /* Mantiene el degradado (overlay) y centra la imagen */
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+        url('../Contenido/Local/imagenEmprende.png') center center no-repeat;
+    background-size: cover;
+    color: var(--color-texto);
+    /* Usa la variable de texto (blanco) */
+    text-align: center;
+    padding: 0 20px;
+    /* Ajusta el padding ya que estamos usando height */
     display: flex;
-    align-items: flex-start;
-    margin-bottom: 15px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.emprende-icono {
-    color: var(--color-dorado);
-    margin-right: 15px;
-    margin-top: 5px;
-}
-
-.emprende-imagen-contenedor {
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid var(--color-borde);
-}
-
-.emprende-imagen {
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
     width: 100%;
-    height: auto;
+    /* Agregamos una ligera sombra para que el texto resalte sobre la imagen */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.hero h1 {
+    /* Estilo tomado de .hero-titulo del general.css */
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--color-dorado);
+    /* Usa la variable global */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+}
+
+.hero h1::after {
+    /* Estilo del separador dorado, similar a los títulos de sección */
+    content: "";
     display: block;
+    width: 60%;
+    height: 4px;
+    background: var(--color-dorado);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+
+.hero p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--color-texto);
+    /* Usa la variable de texto */
+    opacity: 0.9;
+}
+
+
+/* ------------------------------------------- */
+/* BENEFICIOS (Alineado con estilo de secciones) */
+/* ------------------------------------------- */
+.benefits {
+    padding: 80px 20px;
+    background: var(--color-fondo);
+    /* Fondo negro de la variable global */
+    text-align: center;
+}
+
+.benefits h2 {
+    /* Estilo de título de sección del general.css */
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--color-dorado);
+    margin-bottom: 40px;
+}
+
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.benefit {
+    /* Fondo oscuro similar a las tarjetas de presentacion/tiktok */
+    background: var(--color-gris-oscuro);
+    color: var(--color-texto);
+    border: 2px solid var(--color-borde);
+    /* Borde suave de la variable */
+    border-radius: 10px;
+    /* Ajustado para ser más consistente */
+    padding: 25px;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    /* Sombra más sutil */
     transition: var(--transicion);
 }
 
-.emprende-imagen:hover {
-    transform: scale(1.05);
+.benefit:hover {
+    background: var(--color-dorado);
+    color: var(--color-fondo);
+    transform: translateY(-5px);
+    /* Ajustado para ser más consistente con el hover de tarjetas */
+    box-shadow: var(--sombra-caja);
+}
+
+.testimonios {
+    background: var(--color-fondo);
+    /* Aseguramos que sea el fondo principal */
+    padding: 80px 20px;
+    text-align: center;
+    color: var(--color-texto);
+}
+
+.testimonios h2 {
+    font-family: 'Playfair Display', serif;
+    /* Consistencia de fuente */
+    font-size: 2.5rem;
+    color: var(--color-dorado);
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.testimonios-contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.testimonio {
+    /* Fondo más oscuro */
+    background: var(--color-gris-oscuro);
+    padding: 30px;
+    border-radius: 10px;
+    /* Consistencia de borde */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: var(--transicion);
+}
+
+.testimonio:hover {
+    transform: translateY(-5px);
+    /* Consistencia de hover */
+    box-shadow: var(--sombra-caja);
+}
+
+.testimonio p {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--color-gris-claro);
+    /* Usa el color gris más claro para el texto */
+    margin-bottom: 15px;
+}
+
+.testimonio h4 {
+    color: var(--color-dorado);
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+
+/* ------------------------------------------- */
+/* COMO FUNCIONA (Ajustado para consistencia) */
+/* ------------------------------------------- */
+.how-it-works {
+    /* Fondo en degradado negro a dorado para un efecto premium */
+    background: linear-gradient(135deg, var(--color-fondo), var(--color-dorado-oscuro));
+    color: var(--color-texto);
+    padding: 40px 20px;
+    text-align: center;
+    /* Quitamos el border-radius superior si queremos que se pegue al footer, o lo dejamos si es un CTA intermedio */
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.how-it-works h2 {
+    font-family: 'Playfair Display', serif;
+    /* Consistencia de fuente */
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    color: var(--color-dorado);
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.step {
+    background: var(--color-gris-oscuro);
+    /* Fondo más oscuro para el paso */
+    color: var(--color-texto);
+    border-radius: 10px;
+    /* Consistencia de borde */
+    padding: 30px;
+    width: 260px;
+    border: 2px solid var(--color-borde);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transition: var(--transicion);
+}
+
+.step:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-caja);
+}
+
+.step span {
+    display: inline-block;
+    background: var(--color-dorado);
+    color: var(--color-fondo);
+    /* Texto del número en negro */
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 15px 22px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* ------------------------------------------- */
+/* CTA (Call to Action) */
+/* ------------------------------------------- */
+.cta {
+    margin: 56px auto;
+    width: 88%;
+    max-width: 1100px;
+    padding: 40px 20px;
+    /* Aumentamos el padding para que se vea más impactante */
+    background: var(--color-gris-oscuro);
+    /* Fondo oscuro elegante */
+    color: var(--color-texto);
+    border-radius: 15px;
+    /* Consistencia de borde */
+    text-align: center;
+    box-shadow: var(--sombra-caja);
+}
+
+.cta h2 {
+    font-family: 'Playfair Display', serif;
+    /* Consistencia de fuente */
+    color: var(--color-dorado);
+    margin-bottom: 25px;
+    font-size: 2rem;
+}
+
+.cta .cta-btn {
+    /* Usamos la clase .boton global para consistencia */
+    /* Las propiedades en el HTML son idénticas a .boton, no es necesario redefinir */
+    display: inline-block;
+    background: var(--color-dorado);
+    color: var(--color-fondo);
+    padding: 14px 34px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: var(--transicion);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+}
+
+.cta .cta-btn:hover {
+    background-color: var(--color-dorado-oscuro);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ------------------------------------------- */
+/* BANNER FINAL (Alineado con el estilo principal) */
+/* ------------------------------------------- */
+.final-banner {
+    margin: 0px auto 80px auto;
+    padding: 80px 20px;
+    background: url('../Contenido/Local/NuestroLocal.png') center/cover no-repeat;
+    background-size: cover;
+    /* Asegura la adaptabilidad de la imagen */
+    position: relative;
+    color: var(--color-texto);
+    text-align: center;
+    border-radius: 10px;
+    /* Consistencia de borde */
+    overflow: hidden;
+    max-width: 1200px;
+    width: 88%;
+    box-shadow: var(--sombra-caja);
+}
+
+.final-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* Overlay más sutil */
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+}
+
+.final-banner h2 {
+    position: relative;
+    font-family: 'Playfair Display', serif;
+    /* Consistencia de fuente */
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    /* Aumentamos el tamaño */
+    font-style: italic;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    color: var(--color-dorado);
+    /* Color dorado para resaltar */
+    z-index: 1;
+}
+
+/* ------------------ Responsive ------------------ */
+@media (max-width: 880px) {
+    .hero {
+        height: 45vh;
+        /* Se reduce la altura en móviles */
+        padding: 40px 18px;
+        /* Quitamos los border-radius inferiores si el header no los tiene */
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .benefits {
+        padding: 40px 16px;
+    }
+
+    .how-it-works {
+        padding: 40px 16px;
+        border-radius: 0;
+        /* Quitar redondeo superior para móvil si es necesario */
+    }
+
+    .cta {
+        padding: 32px 14px;
+        border-radius: 10px;
+    }
+
+    .benefits-grid {
+        gap: 18px;
+    }
+
+    .steps {
+        gap: 16px;
+    }
+
+    .step {
+        width: 100%;
+        max-width: 420px;
+    }
+
+    .final-banner {
+        padding: 60px 20px;
+    }
 }

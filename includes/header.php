@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Olfato Perfumería</title>
-    
+
     <!-- Fuentes de Google -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap">
-    
+
     <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Hojas de estilo -->
-    <link rel="stylesheet" href="../assets/css/general.css">          <!-- Estilos globales -->
+    <link rel="stylesheet" href="../assets/css/general.css"> <!-- Estilos globales -->
     <link rel="stylesheet" href="../assets/css/componentes/header.css"><!-- Estilos del header -->
 </head>
 
@@ -29,19 +30,19 @@
             <nav class="navegacion">
                 <ul class="menu" id="menu-principal">
                     <li class="menu-item"><a href="../pages/index.php#inicio" class="menu-enlace">Inicio</a></li>
-                    <li class="menu-item"><a href="../pages/productos.php" class="menu-enlace">Productos</a></li>
                     <li class="menu-item"><a href="../pages/index.php#presentaciones" class="menu-enlace">Presentaciones</a></li>
                     <li class="menu-item"><a href="../pages/index.php#notas" class="menu-enlace">Notas</a></li>
+                    <li class="menu-item"><a href="../pages/productos.php" class="menu-enlace">Productos</a></li>
                     <li class="menu-item"><a href="../pages/emprende.php" class="menu-enlace">Emprende</a></li>
                     <li class="menu-item"><a href="../pages/contacto.php" class="menu-enlace">Contacto</a></li>
-                    
+
                     <!-- Botones de usuario y carrito - ESTILOS UNIFICADOS -->
                     <li class="menu-item menu-item-botones">
                         <!-- Botón de Login -->
                         <button id="boton-login" class="boton-icono header-boton" aria-label="Iniciar sesión">
                             <i class="fas fa-user"></i>
                         </button>
-                        
+
                         <!-- Botón de Carrito -->
                         <button id="boton-carrito" class="boton-icono header-boton carrito-boton" aria-label="Carrito de compras">
                             <i class="fas fa-shopping-bag"></i>
@@ -57,7 +58,7 @@
             </button>
         </div>
     </header>
-    
+
     <div class="overlay-menu" id="overlay-menu"></div> <!-- Overlay para el menú móvil -->
 
     <!-- Overlay para el carrito -->
@@ -102,4 +103,4 @@
     </div>
 </body>
 <!-- Script para funcionalidad del carrito -->
-<script src="../assets/js/carrito.js"></script>
+<script src="../assets/js/Components/carrito.js"></script>

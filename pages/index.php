@@ -1,3 +1,7 @@
+<?php
+include '../includes/DB/conexion_db.php';
+?>
+
 <html lang="en">
 
 <head>
@@ -8,6 +12,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap">
     <link rel="stylesheet" href="../assets/css/General.css">
+    <link rel="stylesheet" href="../assets/css/Componentes/productos_componente.css">
 </head>
 
 <body>
@@ -34,85 +39,47 @@
             </a>
         </section>
 
-        <!-- Sección Productos (Estructura lista para datos futuros) -->
-        <section id="productos" class="seccion productos">
-            <div class="contenedor">
-                <div class="titulo-seccion">
-                    <h2>NUESTRA COLECCIÓN</h2>
-                    <div class="separador"></div>
-                    <p>Descubre nuestras fragancias exclusivas, cuidadosamente seleccionadas para ofrecerte una experiencia olfativa única.</p>
-                </div>
+       <!-- Sección Productos -->
+<section id="productos" class="seccion productos">
+    <div class="contenedor">
+        <div class="titulo-seccion">
+            <h2>NUESTRA COLECCIÓN</h2>
+            <div class="separador"></div>
+            <p>Descubre nuestras fragancias exclusivas, cuidadosamente seleccionadas para ofrecerte una experiencia olfativa única.</p>
+        </div>
 
-                <!-- Filtros de categorías -->
-                <div class="categorias">
-                    <button class="categoria-boton activo" data-categoria="todos">Todos</button>
-                    <button class="categoria-boton" data-categoria="mujer">Mujer</button>
-                    <button class="categoria-boton" data-categoria="hombre">Hombre</button>
-                    <button class="categoria-boton" data-categoria="unisex">Unisex</button>
-                    <button class="categoria-boton" data-categoria="unisex">Arabes</button>
-                    <button class="categoria-boton" data-categoria="ofertas">Ofertas</button>
-                </div>
+         <!-- Filtros de categorías -->
+        <div class="categorias">
+            <?php
+            $categoria_actual = $_GET['categoria'] ?? 'todos';
+            ?>
+            <button class="categoria-boton <?php echo $categoria_actual === 'todos' ? 'activo' : ''; ?>" data-categoria="todos">Todos</button>
+            <button class="categoria-boton <?php echo $categoria_actual === 'masculino' ? 'activo' : ''; ?>" data-categoria="masculino">Hombre</button>
+            <button class="categoria-boton <?php echo $categoria_actual === 'femenino' ? 'activo' : ''; ?>" data-categoria="femenino">Mujer</button>
+            <button class="categoria-boton <?php echo $categoria_actual === 'unisex' ? 'activo' : ''; ?>" data-categoria="unisex">Unisex</button>
+            <button class="categoria-boton <?php echo $categoria_actual === 'arabes' ? 'activo' : ''; ?>" data-categoria="arabes">Árabes</button>
+        </div>
 
-                <!-- Contenedor donde se cargarán los productos dinámicamente -->
-                <div class="productos-grid" id="contenedor-productos">
-                    <!-- Los productos se cargarán aquí dinámicamente con JavaScript -->
-                    <div class="producto-placeholder">
-                        <div class="placeholder-imagen"></div>
-                        <div class="placeholder-info">
-                            <div class="placeholder-linea largo"></div>
-                            <div class="placeholder-linea medio"></div>
-                            <div class="placeholder-precio">
-                                <div class="placeholder-linea corto"></div>
-                                <div class="placeholder-boton"></div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Contenedor de productos -->
+        <div id="contenedor-productos">
+            <?php
+            // Incluir la conexión y el componente
+            include '../includes/DB/productos_componente.php';
+            
+            // Obtener categoría actual
+            $categoria_actual = $_GET['categoria'] ?? 'todos';
+            
+            // Mostrar solo 6 productos de la categoría seleccionada
+            mostrarProductos($categoria_actual, 6);
+            ?>
+        </div>
 
-                    <!-- Repetir placeholders para simular la grid -->
-                    <div class="producto-placeholder">
-                        <div class="placeholder-imagen"></div>
-                        <div class="placeholder-info">
-                            <div class="placeholder-linea largo"></div>
-                            <div class="placeholder-linea medio"></div>
-                            <div class="placeholder-precio">
-                                <div class="placeholder-linea corto"></div>
-                                <div class="placeholder-boton"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="producto-placeholder">
-                        <div class="placeholder-imagen"></div>
-                        <div class="placeholder-info">
-                            <div class="placeholder-linea largo"></div>
-                            <div class="placeholder-linea medio"></div>
-                            <div class="placeholder-precio">
-                                <div class="placeholder-linea corto"></div>
-                                <div class="placeholder-boton"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="producto-placeholder">
-                        <div class="placeholder-imagen"></div>
-                        <div class="placeholder-info">
-                            <div class="placeholder-linea largo"></div>
-                            <div class="placeholder-linea medio"></div>
-                            <div class="placeholder-precio">
-                                <div class="placeholder-linea corto"></div>
-                                <div class="placeholder-boton"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Botón para ver más productos -->
-                <div class="texto-centrado">
-                    <a href="../pages/productos.php" class="boton boton-secundario">VER TODOS LOS PRODUCTOS</a>
-                </div>
-            </div>
-        </section>
-
+        <!-- Botón para ver más productos -->
+        <div class="texto-centrado">
+            <a href="../pages/productos.php" class="boton boton-secundario">VER TODOS LOS PRODUCTOS</a>
+        </div>
+    </div>
+</section>
         <!-- Sección Presentaciones -->
         <section id="presentaciones" class="seccion presentaciones">
             <div class="contenedor">
@@ -385,7 +352,6 @@
     });
 </script>
 <script src="../assets/js/presentaciones.js"></script>
-<script src="../assets/js/productos.js"></script>
+<script src="../assets/js/filtroIndex.js"></script>
 <script src="../assets/js/sliderNotas.js"></script>
-
 </html>
