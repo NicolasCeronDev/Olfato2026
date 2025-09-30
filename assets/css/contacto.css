@@ -1,84 +1,223 @@
-/* Contacto */
-.contacto {
-    background-color: var(--color-gris-oscuro);
-}
-
-.contacto-contenido {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-}
-
-.formulario-grupo {
-    margin-bottom: 20px;
-}
-
-.formulario-grupo.doble {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.formulario-etiqueta {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--color-gris-claro);
-}
-
-.formulario-control {
-    width: 100%;
-    padding: 12px 15px;
-    background-color: var(--color-gris-medio);
-    border: 1px solid var(--color-borde);
-    border-radius: 5px;
-    color: var(--color-texto);
-    transition: var(--transicion);
-    font-family: inherit;
-}
-
-.formulario-control:focus {
-    outline: none;
-    border-color: var(--color-dorado);
-}
-
-textarea.formulario-control {
-    min-height: 150px;
-    resize: vertical;
-}
-
-.contacto-info {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    margin-top: 40px;
-}
-
-.contacto-item {
+/* Formulario */
+.contact-form-section {
     display: flex;
-    align-items: center;
-}
-
-.contacto-icono {
-    width: 45px;
-    height: 45px;
-    background-color: rgba(183, 147, 91, 0.2);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    margin-right: 15px;
-    color: var(--color-dorado);
+    padding: 100px 20px 40px;
 }
 
-.contacto-item h4 {
+.form-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000;
+    /* Texto negro elegante */
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.form-title::after {
+    content: "";
+    display: block;
+    width: 60%;
+    height: 3px;
+    background: #d4a017;
+    /* Línea dorada debajo */
+    margin: 8px auto 0;
+    border-radius: 5px;
+}
+
+.form-subtitle {
+    text-align: center;
+    font-size: 1rem;
+    color: #555;
+    /* Gris suave */
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.contact-form {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+}
+
+.contact-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #212121;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.input-group i {
+    margin-right: 10px;
+    color: #d4af37;
+}
+
+.input-group input,
+.input-group textarea {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+}
+
+.textarea {
+    align-items: flex-start;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #d4af37;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background: #b8962e;
+}
+
+/* Info rápida */
+.quick-info {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 40px 20px;
+    background: #fafafa;
+}
+
+.info-card {
+    text-align: center;
+    max-width: 250px;
+    color: #333;
+    /* 👈 ahora se ve oscuro y legible */
+}
+
+.info-card i {
+    font-size: 2rem;
+    color: #d4af37;
+    margin-bottom: 10px;
+}
+
+.info-card h3 {
+    font-weight: bold;
     margin-bottom: 5px;
-    color: var(--color-dorado);
+    color: #555;
 }
 
-.mapa {
-    border-radius: 10px;
+.info-card p {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+
+/* Mapa */
+.map-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.map-section h2 {
+    margin-bottom: 15px;
+}
+
+/* FAQ */
+.faq {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.faq h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #fffafa;
+    /* TITULO NEGRO */
+}
+
+.faq-item {
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
     overflow: hidden;
-    border: 1px solid var(--color-borde);
-    height: 100%;
-    min-height: 400px;
+    transition: all 0.3s ease-in-out;
+}
+
+.faq-item summary {
+    padding: 15px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    position: relative;
+    color: #000;
+    /* PREGUNTAS NEGRAS */
+}
+
+.faq-item summary::after {
+    content: "+";
+    font-size: 1.5rem;
+    color: #d4a017;
+    /* ICONO DORADO */
+    position: absolute;
+    right: 20px;
+    transition: transform 0.3s ease;
+}
+
+.faq-item[open] summary::after {
+    content: "-";
+    transform: rotate(180deg);
+}
+
+.faq-item p {
+    padding: 15px 20px;
+    margin: 0;
+    color: #333;
+    /* RESPUESTAS GRIS OSCURO */
+    border-top: 1px solid #eee;
+    background: #fafafa;
+    font-size: 0.95rem;
+}
+
+
+
+/* Botón WhatsApp */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366;
+    color: white;
+    font-size: 2rem;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
 }

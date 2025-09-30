@@ -1,144 +1,147 @@
 /* Footer */
+a {
+    text-decoration: none;
+}
 
-        .pie-pagina {
-            background-color: var(--color-fondo);
-            border-top: 1px solid var(--color-borde);
-            padding: 60px 0 30px;
-            margin-top: 0px;
-        }
+.pie-pagina {
+    background-color: var(--color-fondo);
+    border-top: 1px solid var(--color-borde);
+    padding: 60px 0 30px;
+    margin-top: 0px;
+}
 
-        .pie-contenido {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
+.pie-contenido {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
 
-        .pie-columna h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--color-dorado);
-            margin-bottom: 20px;
-            position: relative;
-        }
+.pie-columna h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--color-dorado);
+    margin-bottom: 20px;
+    position: relative;
+}
 
-        .pie-columna h4::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 2px;
-            background-color: var(--color-dorado);
-            margin-top: 10px;
-        }
+.pie-columna h4::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: var(--color-dorado);
+    margin-top: 10px;
+}
 
-        .pie-lista {
-            list-style: none;
-        }
+.pie-lista {
+    list-style: none;
+}
 
-        .pie-lista li {
-            margin-bottom: 10px;
-        }
+.pie-lista li {
+    margin-bottom: 10px;
+}
 
-        .pie-lista a {
-            color: var(--color-gris-claro);
-            text-decoration: none;
-            transition: var(--transicion);
-        }
+.pie-lista a {
+    color: var(--color-gris-claro);
+    text-decoration: none;
+    transition: var(--transicion);
+}
 
-        .pie-lista a:hover {
-            color: var(--color-dorado);
-            padding-left: 5px;
-        }
+.pie-lista a:hover {
+    color: var(--color-dorado);
+    padding-left: 5px;
+}
 
-        /* Iconos de redes sociales mejorados */
-        .redes-sociales {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
+/* Iconos de redes sociales mejorados */
+.redes-sociales {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
 
-        .red-social {
-            display: inline-flex;
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(145deg, rgba(183, 147, 91, 0.1), rgba(183, 147, 91, 0.2));
-            border-radius: 50%;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-dorado);
-            transition: var(--transicion);
-            border: 1px solid rgba(183, 147, 91, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
+.red-social {
+    display: inline-flex;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(145deg, rgba(183, 147, 91, 0.1), rgba(183, 147, 91, 0.2));
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-dorado);
+    transition: var(--transicion);
+    border: 1px solid rgba(183, 147, 91, 0.3);
+    position: relative;
+    overflow: hidden;
+}
 
-        .red-social::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: var(--transicion);
-        }
+.red-social::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: var(--transicion);
+}
 
-        .red-social:hover {
-            background: var(--color-dorado);
-            color: var(--color-fondo);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(183, 147, 91, 0.3);
-        }
+.red-social:hover {
+    background: var(--color-dorado);
+    color: var(--color-fondo);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(183, 147, 91, 0.3);
+}
 
-        .red-social:hover::before {
-            left: 100%;
-        }
+.red-social:hover::before {
+    left: 100%;
+}
 
-        .red-social i {
-            font-size: 1.2rem;
-            z-index: 1;
-        }
+.red-social i {
+    font-size: 1.2rem;
+    z-index: 1;
+}
 
-        .pie-derechos {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid var(--color-borde);
-            color: var(--color-gris-claro);
-            font-size: 0.9rem;
-        }
+.pie-derechos {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid var(--color-borde);
+    color: var(--color-gris-claro);
+    font-size: 0.9rem;
+}
 
-        .pie-contacto {
-            margin-top: 15px;
-        }
+.pie-contacto {
+    margin-top: 15px;
+}
 
-        .pie-contacto p {
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+.pie-contacto p {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-        .pie-contacto i {
-            color: var(--color-dorado);
-            width: 20px;
-        }
+.pie-contacto i {
+    color: var(--color-dorado);
+    width: 20px;
+}
 
-        /* Estilos responsivos */
-        @media (max-width: 768px) {
-            .pie-contenido {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .redes-sociales {
-                justify-content: center;
-            }
-            
-            .pie-columna {
-                text-align: center;
-            }
-            
-            .pie-columna h4::after {
-                margin: 10px auto 0;
-            }
-        }
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .pie-contenido {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .redes-sociales {
+        justify-content: center;
+    }
+
+    .pie-columna {
+        text-align: center;
+    }
+
+    .pie-columna h4::after {
+        margin: 10px auto 0;
+    }
+}
