@@ -1,5 +1,5 @@
 <?php
-// includes/DB/productos_componente.php - VERSIÓN MEJORADA
+// includes/DB/productos_componente.php - VERSIÓN CORREGIDA
 include '../includes/DB/conexion_db.php';
 
 function mostrarProductos($categoria = 'todos', $limite = 6, $tipo_seccion = 'normal')
@@ -23,22 +23,23 @@ function mostrarProductos($categoria = 'todos', $limite = 6, $tipo_seccion = 'no
         $params[] = $categoria;
         $types .= "s";
     }
-
-    // MODIFICACIÓN: Filtrar según el tipo de sección
     switch ($tipo_seccion) {
         case 'ofertas':
             $where_conditions[] = "o.valor_descuento > 0";
+            // Orden por defecto para ofertas
+            $orden = " ORDER BY p.nombre";
             break;
         case 'nuevos':
             // Ordenar por ID descendente (los más recientes primero)
-            $sql .= " ORDER BY p.id_producto DESC";
+            $orden = " ORDER BY p.id_producto DESC";
             break;
         case 'vendidos':
             // Por ahora ordenar por ID ascendente (los más antiguos)
-            $sql .= " ORDER BY p.id_producto ASC";
+            $orden = " ORDER BY p.id_producto ASC";
             break;
         default:
-            $sql .= " ORDER BY p.nombre";
+            // Orden por defecto
+            $orden = " ORDER BY p.nombre";
     }
 
     // Aplicar condiciones WHERE si existen
@@ -46,10 +47,8 @@ function mostrarProductos($categoria = 'todos', $limite = 6, $tipo_seccion = 'no
         $sql .= " WHERE " . implode(" AND ", $where_conditions);
     }
 
-    // MODIFICACIÓN: Si no se definió orden en el switch, usar orden por defecto
-    if ($tipo_seccion === 'ofertas' || $tipo_seccion === 'normal') {
-        $sql .= " ORDER BY p.nombre";
-    }
+    // CORRECCIÓN: Agregar el orden solo una vez
+    $sql .= $orden;
 
     $sql .= " LIMIT ?";
     $params[] = $limite;
@@ -130,7 +129,7 @@ function mostrarProductos($categoria = 'todos', $limite = 6, $tipo_seccion = 'no
 
     $stmt->close();
     
-    // MODIFICACIÓN: El modal se incluye aquí para que esté disponible en todas las páginas
+    // Modal para productos (se carga automáticamente con el componente)
     echo '
     <!-- Modal para productos (se carga automáticamente con el componente) -->
     <div class="modal-producto" id="modal-producto">
