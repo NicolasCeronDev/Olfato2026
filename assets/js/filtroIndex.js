@@ -1,4 +1,5 @@
 // Filtrado básico de productos - VERSIÓN SIMPLE
+// Script para filtrar productos por categoría y mostrar un máximo de 6 productos
 document.addEventListener('DOMContentLoaded', function() {
     const botonesCategoria = document.querySelectorAll('.categoria-boton');
     

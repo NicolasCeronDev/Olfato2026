@@ -73,19 +73,21 @@ include '../includes/DB/conexion_db.php';
                         </div>
                     </div>
                 </div>
+            </a>
 
-                <!-- Sección Unisex -->
-                <a href="unisex.php" target="_blank" class="categoria-enlace">
-                    <div class="categoria-seccion" data-categoria="unisex">
-                        <img src="../assets/Contenido/Perfumes/CategoriasFondos/Unisex-.jpg"
-                            alt="Fragancias Unisex" class="categoria-imagen">
-                        <div class="categoria-overlay">
-                            <div class="categoria-contenido">
-                                <h2 class="categoria-titulo">UNISEX</h2>
-                                <p class="categoria-subtitulo">Fragancias para todos</p>
-                            </div>
+            <!-- Sección Unisex -->
+            <a href="unisex.php" target="_blank" class="categoria-enlace">
+                <div class="categoria-seccion" data-categoria="unisex">
+                    <img src="../assets/Contenido/Perfumes/CategoriasFondos/Unisex-.jpg"
+                        alt="Fragancias Unisex" class="categoria-imagen">
+                    <div class="categoria-overlay">
+                        <div class="categoria-contenido">
+                            <h2 class="categoria-titulo">UNISEX</h2>
+                            <p class="categoria-subtitulo">Fragancias para todos</p>
                         </div>
                     </div>
+                </div>
+            </a>
         </div>
     </div>
 
@@ -102,7 +104,7 @@ include '../includes/DB/conexion_db.php';
                 <?php
                 include '../includes/DB/productos_componente.php';
                 // Mostramos solo productos con ofertas
-                mostrarProductos('todos', 6, 'ofertas', true);
+                mostrarProductos('todos', 6, 'ofertas');
                 ?>
             </div>
         </div>
@@ -120,7 +122,7 @@ include '../includes/DB/conexion_db.php';
             <div id="contenedor-nuevos">
                 <?php
                 // Mostramos los productos más recientes
-                mostrarProductos('todos', 6, 'nuevos', false);
+                mostrarProductos('todos', 6, 'nuevos');
                 ?>
             </div>
         </div>
@@ -138,7 +140,7 @@ include '../includes/DB/conexion_db.php';
             <div id="contenedor-mas-vendidos">
                 <?php
                 // Por ahora mostramos los más antiguos como "más vendidos"
-                mostrarProductos('todos', 6, 'vendidos', false);
+                mostrarProductos('todos', 6, 'vendidos');
                 ?>
             </div>
         </div>
