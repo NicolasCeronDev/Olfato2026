@@ -1,0 +1,204 @@
+/* ==== Tipografía y colores base ==== */
+body {
+    background-color: #000;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ==== Encabezado ==== */
+.encabezado {
+    text-align: center;
+    padding: 40px 20px 20px;
+    color: #d4af37;
+}
+
+.encabezado h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.encabezado p {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-top: 10px;
+}
+
+/* Contenedor del botón */
+.seccion-volver {
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px 40px;
+    background-color: #000000;
+    margin-top: 40px;
+    /* 👈 Aumenta este valor si quieres más separación */
+}
+
+
+/* Estilo del botón */
+.boton-volver {
+    background-color: #d4af37;
+    /* Dorado */
+    color: #000000;
+    /* Negro */
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 18px;
+    box-shadow: 0 0 10px #d4af37;
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover */
+.boton-volver:hover {
+    background-color: #000000;
+    color: #d4af37;
+    box-shadow: 0 0 15px #d4af37;
+    transform: scale(1.05);
+}
+
+/* ==== Categorías ==== */
+.categoria {
+    padding: 30px 20px;
+}
+
+.titulo-categoria {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #d4af37;
+    margin: 40px 0 20px 0;
+    text-align: center;
+    border-bottom: 1px solid #d4af37;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* ==== Grid de productos ==== */
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* 👈 CAMBIO (antes 250px) */
+    gap: 20px;
+    /* 👈 CAMBIO (antes 25px) */
+    max-width: 1000px;
+    /* 👈 CAMBIO (antes 1200px para que no se vean tan grandes) */
+    margin: 0 auto;
+}
+
+/* ==== Tarjeta de producto ==== */
+.producto {
+    background-color: #000;
+    border: 1px solid #d4af37;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.producto:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+/* ==== Imagen ==== */
+.imagen-container {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.producto img {
+    max-width: 90%;
+    /* 👈 CAMBIO (antes 100%) */
+    max-height: 90%;
+    /* 👈 CAMBIO */
+    object-fit: cover;
+}
+
+/* ==== Información del producto ==== */
+.info-producto {
+    padding: 12px;
+    /* 👈 CAMBIO (antes 15px) */
+    text-align: center;
+}
+
+.info-producto h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    /* 👈 CAMBIO (antes 1.2rem) */
+    color: #fff;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.precio {
+    font-size: 0.95rem;
+    /* 👈 CAMBIO (antes 1.1rem) */
+    color: #d4af37;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* ==== Botones ==== */
+.acciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d4af37;
+    padding: 6px 10px;
+    /* 👈 CAMBIO (antes 8px 12px) */
+    border-radius: 5px;
+}
+
+.boton-carrito {
+    background: none;
+    border: none;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-size: 0.85rem;
+    /* 👈 CAMBIO */
+}
+
+.boton-carrito:hover {
+    color: #fff;
+}
+
+.icono-corazon {
+    color: #000;
+    font-size: 1.1rem;
+    /* 👈 CAMBIO (antes 1.3rem) */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.icono-corazon:hover {
+    color: #fff;
+}
+
+/* ==== Responsivo ==== */
+@media (max-width: 768px) {
+    .titulo-categoria {
+        font-size: 1.5rem;
+    }
+
+    .grid-productos {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .grid-productos {
+        grid-template-columns: 1fr;
+    }
+}

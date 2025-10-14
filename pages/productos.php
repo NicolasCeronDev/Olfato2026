@@ -33,52 +33,59 @@ include '../includes/DB/conexion_db.php';
     <div class="contenedor">
         <div class="secciones-categorias">
             <!-- Sección Hombre -->
-            <div class="categoria-seccion" data-categoria="hombre">
-                <img src="../assets/Contenido/Perfumes/CategoriasFondos/ParaEllos.jpg"
-                    alt="Perfumes Hombre" class="categoria-imagen">
-                <div class="categoria-overlay">
-                    <div class="categoria-contenido">
-                        <h2 class="categoria-titulo">PARA HOMBRE</h2>
-                        <p class="categoria-subtitulo">Amaderados • Cítricos • Orientales</p>
+
+            <a href="parahombre.php" target="_blank" class="categoria-enlace">
+                <div class="categoria-seccion" data-categoria="hombre">
+                    <img src="../assets/Contenido/Perfumes/CategoriasFondos/ParaEllos.jpg"
+                        alt="Perfumes Hombre" class="categoria-imagen">
+                    <div class="categoria-overlay">
+                        <div class="categoria-contenido">
+                            <h2 class="categoria-titulo">PARA HOMBRE</h2>
+                            <p class="categoria-subtitulo">Amaderados • Cítricos • Orientales</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
             <!-- Sección Mujer -->
-            <div class="categoria-seccion" data-categoria="mujer">
-                <img src="../assets/Contenido/Perfumes/CategoriasFondos/ParaEllas.jpg"
-                    alt="Perfumes Mujer" class="categoria-imagen">
-                <div class="categoria-overlay">
-                    <div class="categoria-contenido">
-                        <h2 class="categoria-titulo">PARA MUJER</h2>
-                        <p class="categoria-subtitulo">Florales • Frutales • Gourmand • Orientales</p>
+            <a href="paramujer.php" target="_blank" class="categoria-enlace">
+                <div class="categoria-seccion" data-categoria="mujer">
+                    <img src="../assets/Contenido/Perfumes/CategoriasFondos/ParaEllas.jpg"
+                        alt="Perfumes Mujer" class="categoria-imagen">
+                    <div class="categoria-overlay">
+                        <div class="categoria-contenido">
+                            <h2 class="categoria-titulo">PARA MUJER</h2>
+                            <p class="categoria-subtitulo">Florales • Frutales • Gourmand • Orientales</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
             <!-- Sección Árabes -->
-            <div class="categoria-seccion" data-categoria="arabes">
-                <img src="../assets/Contenido/Perfumes/CategoriasFondos/Arabes.jpg"
-                    alt="Perfumes Árabes" class="categoria-imagen">
-                <div class="categoria-overlay">
-                    <div class="categoria-contenido">
-                        <h2 class="categoria-titulo">PERFUMES ÁRABES</h2>
-                        <p class="categoria-subtitulo">Esencias intensas y duraderas</p>
+            <a href="arabes.php" target="_blank" class="categoria-enlace">
+                <div class="categoria-seccion" data-categoria="arabes">
+                    <img src="../assets/Contenido/Perfumes/CategoriasFondos/Arabes.jpg"
+                        alt="Perfumes Árabes" class="categoria-imagen">
+                    <div class="categoria-overlay">
+                        <div class="categoria-contenido">
+                            <h2 class="categoria-titulo">PERFUMES ÁRABES</h2>
+                            <p class="categoria-subtitulo">Esencias intensas y duraderas</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Sección Unisex -->
-            <div class="categoria-seccion" data-categoria="unisex">
-                <img src="../assets/Contenido/Perfumes/CategoriasFondos/Unisex-.jpg"
-                    alt="Fragancias Unisex" class="categoria-imagen">
-                <div class="categoria-overlay">
-                    <div class="categoria-contenido">
-                        <h2 class="categoria-titulo">UNISEX</h2>
-                        <p class="categoria-subtitulo">Fragancias para todos</p>
+                <!-- Sección Unisex -->
+                <a href="unisex.php" target="_blank" class="categoria-enlace">
+                    <div class="categoria-seccion" data-categoria="unisex">
+                        <img src="../assets/Contenido/Perfumes/CategoriasFondos/Unisex-.jpg"
+                            alt="Fragancias Unisex" class="categoria-imagen">
+                        <div class="categoria-overlay">
+                            <div class="categoria-contenido">
+                                <h2 class="categoria-titulo">UNISEX</h2>
+                                <p class="categoria-subtitulo">Fragancias para todos</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -101,7 +108,7 @@ include '../includes/DB/conexion_db.php';
         </div>
     </section>
 
-     <!-- Sección: NUEVAS FRAGANCIAS -->
+    <!-- Sección: NUEVAS FRAGANCIAS -->
     <section class="seccion productos-nuevos" style="background-color: var(--color-fondo);">
         <div class="contenedor">
             <div class="titulo-seccion">
@@ -118,7 +125,7 @@ include '../includes/DB/conexion_db.php';
             </div>
         </div>
     </section>
-    
+
     <!-- Sección: LOS MÁS VENDIDOS -->
     <section class="seccion productos-destacados" style="background-color: var(--color-gris-oscuro);">
         <div class="contenedor">

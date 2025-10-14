@@ -1,8 +1,7 @@
 <?php
-// includes/DB/productos_componente.php - VERSIÓN CORREGIDA
 include '../includes/DB/conexion_db.php';
 
-function mostrarProductos($categoria = 'todos', $limite = 6, $tipo_seccion = 'normal')
+function mostrarProductos($categoria = 'todos', $limite = 6, $tipo_seccion = 'normal', $filtro_categoria = null)
 {
     global $conexion;
 
@@ -23,6 +22,14 @@ function mostrarProductos($categoria = 'todos', $limite = 6, $tipo_seccion = 'no
         $params[] = $categoria;
         $types .= "s";
     }
+
+    // Filtrar por categoría específica si se proporciona
+    if ($filtro_categoria !== null) {
+        $where_conditions[] = "c.nombre_categoria = ?";
+        $params[] = $filtro_categoria;
+        $types .= "s";
+    }
+
     switch ($tipo_seccion) {
         case 'ofertas':
             $where_conditions[] = "o.valor_descuento > 0";
@@ -49,14 +56,15 @@ function mostrarProductos($categoria = 'todos', $limite = 6, $tipo_seccion = 'no
 
     // CORRECCIÓN: Agregar el orden solo una vez
     $sql .= $orden;
-
-    $sql .= " LIMIT ?";
-    $params[] = $limite;
-    $types .= "i";
-
+    // Solo agregar límite si es mayor a 0
+    if ($limite > 0) {
+        $sql .= " LIMIT ?";
+        $params[] = $limite;
+        $types .= "i";
+    }
     // Preparar la consulta
     $stmt = $conexion->prepare($sql);
-    
+
     if (!empty($params)) {
         $stmt->bind_param($types, ...$params);
     }
@@ -124,11 +132,11 @@ function mostrarProductos($categoria = 'todos', $limite = 6, $tipo_seccion = 'no
                 <i class="fas fa-box-open"></i>
                 <h3>No hay productos disponibles</h3>
                 <p>No encontramos productos en esta categoría.</p>
-              </div>';
+            </div>';
     }
 
     $stmt->close();
-    
+
     // Modal para productos (se carga automáticamente con el componente)
     echo '
     <!-- Modal para productos (se carga automáticamente con el componente) -->
