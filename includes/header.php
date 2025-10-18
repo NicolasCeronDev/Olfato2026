@@ -15,6 +15,7 @@
     <!-- Hojas de estilo -->
     <link rel="stylesheet" href="../assets/css/general.css"> <!-- Estilos globales -->
     <link rel="stylesheet" href="../assets/css/componentes/header.css"><!-- Estilos del header -->
+    <link rel="stylesheet" href="../assets/css/componentes/login.css"> <!-- Estilos
 </head>
 
 <body>
@@ -103,4 +104,5 @@
     </div>
 </body>
 <!-- Script para funcionalidad del carrito -->
-<script src="../assets/js/Components/carrito.js"></script>
+ <script src="../assets/js/Components/CarritoCompras.js"> </script>
+ <script src="../assets/js/filtroIndex.js"> </script>

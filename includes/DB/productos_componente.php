@@ -193,4 +193,3 @@ function mostrarProductos($categoria = 'todos', $limite = 6, $tipo_seccion = 'no
     </div>';
 }
 ?>
-<script src="../assets/js/Components/ProductoModal.js"></script>

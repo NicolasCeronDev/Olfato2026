@@ -343,14 +343,6 @@ include '../includes/DB/conexion_db.php';
     include '../includes/footer.php';
     ?>
 </body>
-<script>
-    // Validación básica del formulario
-    document.getElementById('formulario-contacto').addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
-        this.reset();
-    });
-</script>
 <script src="../assets/js/presentaciones.js"></script>
 <script src="../assets/js/filtroIndex.js"></script>
 <script src="../assets/js/sliderNotas.js"></script>

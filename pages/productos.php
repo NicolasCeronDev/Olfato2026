@@ -34,7 +34,7 @@ include '../includes/DB/conexion_db.php';
         <div class="secciones-categorias">
             <!-- Sección Hombre -->
 
-            <a href="parahombre.php" target="_blank" class="categoria-enlace">
+            <a href="parahombre.php" class="categoria-enlace">
                 <div class="categoria-seccion" data-categoria="hombre">
                     <img src="../assets/Contenido/Perfumes/CategoriasFondos/ParaEllos.jpg"
                         alt="Perfumes Hombre" class="categoria-imagen">
@@ -48,7 +48,7 @@ include '../includes/DB/conexion_db.php';
             </a>
 
             <!-- Sección Mujer -->
-            <a href="paramujer.php" target="_blank" class="categoria-enlace">
+            <a href="paramujer.php" class="categoria-enlace">
                 <div class="categoria-seccion" data-categoria="mujer">
                     <img src="../assets/Contenido/Perfumes/CategoriasFondos/ParaEllas.jpg"
                         alt="Perfumes Mujer" class="categoria-imagen">
@@ -62,7 +62,7 @@ include '../includes/DB/conexion_db.php';
             </a>
 
             <!-- Sección Árabes -->
-            <a href="arabes.php" target="_blank" class="categoria-enlace">
+            <a href="arabes.php" class="categoria-enlace">
                 <div class="categoria-seccion" data-categoria="arabes">
                     <img src="../assets/Contenido/Perfumes/CategoriasFondos/Arabes.jpg"
                         alt="Perfumes Árabes" class="categoria-imagen">
@@ -76,7 +76,7 @@ include '../includes/DB/conexion_db.php';
             </a>
 
             <!-- Sección Unisex -->
-            <a href="unisex.php" target="_blank" class="categoria-enlace">
+            <a href="unisex.php" class="categoria-enlace">
                 <div class="categoria-seccion" data-categoria="unisex">
                     <img src="../assets/Contenido/Perfumes/CategoriasFondos/Unisex-.jpg"
                         alt="Fragancias Unisex" class="categoria-imagen">
