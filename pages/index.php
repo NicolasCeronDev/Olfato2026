@@ -39,47 +39,47 @@ include '../includes/DB/conexion_db.php';
             </a>
         </section>
 
-       <!-- Sección Productos -->
-<section id="productos" class="seccion productos">
-    <div class="contenedor">
-        <div class="titulo-seccion">
-            <h2>NUESTRA COLECCIÓN</h2>
-            <div class="separador"></div>
-            <p>Descubre nuestras fragancias exclusivas, cuidadosamente seleccionadas para ofrecerte una experiencia olfativa única.</p>
-        </div>
+        <!-- Sección Productos -->
+        <section id="productos" class="seccion productos">
+            <div class="contenedor">
+                <div class="titulo-seccion">
+                    <h2>NUESTRA COLECCIÓN</h2>
+                    <div class="separador"></div>
+                    <p>Descubre nuestras fragancias exclusivas, cuidadosamente seleccionadas para ofrecerte una experiencia olfativa única.</p>
+                </div>
 
-         <!-- Filtros de categorías -->
-        <div class="categorias">
-            <?php
-            $categoria_actual = $_GET['categoria'] ?? 'todos';
-            ?>
-            <button class="categoria-boton <?php echo $categoria_actual === 'todos' ? 'activo' : ''; ?>" data-categoria="todos">Todos</button>
-            <button class="categoria-boton <?php echo $categoria_actual === 'masculino' ? 'activo' : ''; ?>" data-categoria="masculino">Hombre</button>
-            <button class="categoria-boton <?php echo $categoria_actual === 'femenino' ? 'activo' : ''; ?>" data-categoria="femenino">Mujer</button>
-            <button class="categoria-boton <?php echo $categoria_actual === 'unisex' ? 'activo' : ''; ?>" data-categoria="unisex">Unisex</button>
-            <button class="categoria-boton <?php echo $categoria_actual === 'arabes' ? 'activo' : ''; ?>" data-categoria="arabes">Árabes</button>
-        </div>
+                <!-- Filtros de categorías -->
+                <div class="categorias">
+                    <?php
+                    $categoria_actual = $_GET['categoria'] ?? 'todos';
+                    ?>
+                    <button class="categoria-boton <?php echo $categoria_actual === 'todos' ? 'activo' : ''; ?>" data-categoria="todos">Todos</button>
+                    <button class="categoria-boton <?php echo $categoria_actual === 'masculino' ? 'activo' : ''; ?>" data-categoria="masculino">Hombre</button>
+                    <button class="categoria-boton <?php echo $categoria_actual === 'femenino' ? 'activo' : ''; ?>" data-categoria="femenino">Mujer</button>
+                    <button class="categoria-boton <?php echo $categoria_actual === 'unisex' ? 'activo' : ''; ?>" data-categoria="unisex">Unisex</button>
+                    <button class="categoria-boton <?php echo $categoria_actual === 'arabes' ? 'activo' : ''; ?>" data-categoria="arabes">Árabes</button>
+                </div>
 
-        <!-- Contenedor de productos -->
-        <div id="contenedor-productos">
-            <?php
-            // Incluir la conexión y el componente
-            include '../includes/DB/productos_componente.php';
-            
-            // Obtener categoría actual
-            $categoria_actual = $_GET['categoria'] ?? 'todos';
-            
-            // Mostrar solo 6 productos de la categoría seleccionada
-            mostrarProductos($categoria_actual, 6);
-            ?>
-        </div>
+                <!-- Contenedor de productos -->
+                <div id="contenedor-productos">
+                    <?php
+                    // Incluir la conexión y el componente
+                    include '../includes/DB/productos_componente.php';
 
-        <!-- Botón para ver más productos -->
-        <div class="texto-centrado">
-            <a href="../pages/productos.php" class="boton boton-secundario">VER TODOS LOS PRODUCTOS</a>
-        </div>
-    </div>
-</section>
+                    // Obtener categoría actual
+                    $categoria_actual = $_GET['categoria'] ?? 'todos';
+
+                    // Mostrar solo 6 productos de la categoría seleccionada
+                    mostrarProductos($categoria_actual, 6);
+                    ?>
+                </div>
+
+                <!-- Botón para ver más productos -->
+                <div class="texto-centrado">
+                    <a href="../pages/productos.php" class="boton boton-secundario">VER TODOS LOS PRODUCTOS</a>
+                </div>
+            </div>
+        </section>
         <!-- Sección Presentaciones -->
         <section id="presentaciones" class="seccion presentaciones">
             <div class="contenedor">
@@ -346,4 +346,5 @@ include '../includes/DB/conexion_db.php';
 <script src="../assets/js/presentaciones.js"></script>
 <script src="../assets/js/filtroIndex.js"></script>
 <script src="../assets/js/sliderNotas.js"></script>
+
 </html>

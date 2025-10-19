@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <!-- Cabecera principal -->
+    <-- Cabecera principal -->
     <header class="cabecera">
         <div class="contenedor cabecera-contenido">
             <!-- Logo con imagen -->
@@ -40,9 +40,11 @@
                     <!-- Botones de usuario y carrito - ESTILOS UNIFICADOS -->
                     <li class="menu-item menu-item-botones">
                         <!-- Botón de Login -->
-                        <button id="boton-login" class="boton-icono header-boton" aria-label="Iniciar sesión">
-                            <i class="fas fa-user"></i>
-                        </button>
+                        <a href="login.php">
+                            <button id="boton-login" class="boton-icono header-boton" aria-label="Iniciar sesión">
+                                <i class="fas fa-user"></i>
+                            </button>
+                        </a>
 
                         <!-- Botón de Carrito -->
                         <button id="boton-carrito" class="boton-icono header-boton carrito-boton" aria-label="Carrito de compras">
@@ -95,14 +97,17 @@
                 <span class="valor" id="total-carrito">$0.00</span>
             </div>
 
-            <button class="boton ancho-completo mt-3" id="boton-pago">FINALIZAR COMPRA</button>
+            <a href="finalizarcompra.php">
+                <button class="boton ancho-completo mt-3" id="boton-pago">FINALIZAR COMPRA
+                </button> 
+            </a>
 
             <a href="#" class="boton boton-secundario ancho-completo mt-2">
                 <i class="fas fa-arrow-left mr-2"></i> Continuar comprando
             </a>
         </div>
     </div>
-</body>
-<!-- Script para funcionalidad del carrito -->
- <script src="../assets/js/Components/CarritoCompras.js"> </script>
- <script src="../assets/js/filtroIndex.js"> </script>
+    </body>
+    <!-- Script para funcionalidad del carrito -->
+    <script src="../assets/js/Components/CarritoCompras.js"> </script>
+    <script src="../assets/js/filtroIndex.js"> </script>
