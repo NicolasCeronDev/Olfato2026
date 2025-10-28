@@ -1,9 +1,9 @@
 /* ===============================
-   Estilos Generales
+   Estilos Generales para Registro
 =============================== */
 body {
-    margin: 0;
-    padding: 0;
+    margin: 60px;
+    padding: 60px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(to bottom right, #000000, #1a1a1a);
     height: 100vh;
@@ -13,34 +13,34 @@ body {
 }
 
 /* ===============================
-   Contenedor del Login
+   Contenedor del Registro
 =============================== */
-.login-box {
+.registro-box {
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(15px);
     border: 1px solid #C9A227;
     box-shadow: 0 0 25px rgba(201, 162, 39, 0.3);
-    padding: 45px 35px;
+    padding: 40px 35px;
     border-radius: 15px;
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
     text-align: center;
     transition: transform 0.3s ease;
     animation: fadeIn 0.8s ease;
 }
 
-.login-box:hover {
+.registro-box:hover {
     transform: scale(1.02);
 }
 
 /* ===============================
    Título
 =============================== */
-.login-box h1 {
+.registro-box h1 {
     color: #C9A227;
-    margin-bottom: 30px;
-    font-size: 2.2rem;
-    letter-spacing: 2px;
+    margin-bottom: 25px;
+    font-size: 2rem;
+    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
@@ -49,13 +49,12 @@ body {
 =============================== */
 .input-group {
     position: relative;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .input-group input {
     width: 100%;
     padding: 12px 5px 12px 5px;
-    /* top right bottom left */
     background: transparent;
     border: 2px solid #C9A227;
     color: #fff;
@@ -64,7 +63,6 @@ body {
     outline: none;
     transition: all 0.3s ease;
 }
-
 
 .input-group input:focus {
     border-color: #fff;
@@ -81,8 +79,8 @@ body {
     transition: 0.3s ease;
 }
 
-.input-group input:focus+label,
-.input-group input:not(:placeholder-shown)+label {
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
     top: -10px;
     left: 10px;
     font-size: 12px;
@@ -90,10 +88,20 @@ body {
     padding: 0 5px;
 }
 
+/* Campos obligatorios */
+.campo-obligatorio {
+    color: #C9A227 !important;
+}
+
+.campo-obligatorio::after {
+    content: " *";
+    color: #ff4444;
+}
+
 /* ===============================
    Botón elegante
 =============================== */
-.btn-login {
+.btn-registro {
     background: linear-gradient(90deg, #C9A227, #b1891b);
     color: #000;
     border: none;
@@ -105,31 +113,66 @@ body {
     border-radius: 8px;
     transition: all 0.3s ease;
     letter-spacing: 1px;
+    margin-top: 10px;
 }
 
-.btn-login:hover {
+.btn-registro:hover {
     background: #fff;
     color: #000;
     box-shadow: 0 0 15px #C9A227;
 }
 
 /* ===============================
+   Mensajes de alerta
+=============================== */
+.mensaje-error {
+    background: #ff4444;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #ff6666;
+}
+
+.mensaje-success {
+    background: #4CAF50;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #66bb6a;
+}
+
+/* ===============================
    Enlaces extra
 =============================== */
 .extra-links {
-    margin-top: 20px;
+    margin-top: 25px;
     font-size: 14px;
 }
 
 .extra-links a {
     color: #C9A227;
     text-decoration: none;
-    margin: 0 5px;
     transition: 0.3s;
 }
 
 .extra-links a:hover {
     text-decoration: underline;
+}
+
+/* ===============================
+   Logo
+=============================== */
+.registro-box img {
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* ===============================
@@ -140,9 +183,26 @@ body {
         opacity: 0;
         transform: translateY(-20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* ===============================
+   Responsive
+=============================== */
+@media (max-width: 480px) {
+    .registro-box {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    
+    .registro-box h1 {
+        font-size: 1.7rem;
+    }
+    
+    .input-group input {
+        font-size: 14px;
     }
 }

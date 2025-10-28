@@ -40,12 +40,21 @@
                     <!-- Botones de usuario y carrito - ESTILOS UNIFICADOS -->
                     <li class="menu-item menu-item-botones">
                         <!-- Botón de Login -->
-                        <a href="login.php">
-                            <button id="boton-login" class="boton-icono header-boton" aria-label="Iniciar sesión">
+                        <?php if (isset($_SESSION['usuario'])): ?>
+                            <!-- Usuario logueado -->
+                            <a href="mi-cuenta.php" class="header-boton" aria-label="Mi cuenta" title="Mi Cuenta">
                                 <i class="fas fa-user"></i>
-                            </button>
-                        </a>
-
+                            </a>
+                            <a href="../pages/logout.php" class="header-boton" aria-label="Cerrar sesión" title="Cerrar Sesión">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </a>
+                        <?php else: ?>
+                            <!-- Usuario no logueado -->
+                            <a href="../pages/login.php" class="header-boton" aria-label="Iniciar sesión" title="Iniciar Sesión">
+                                <i class="fas fa-user"></i>
+                            </a>
+                        <?php endif; ?>
+                        
                         <!-- Botón de Carrito -->
                         <button id="boton-carrito" class="boton-icono header-boton carrito-boton" aria-label="Carrito de compras">
                             <i class="fas fa-shopping-bag"></i>
@@ -99,7 +108,7 @@
 
             <a href="finalizarcompra.php">
                 <button class="boton ancho-completo mt-3" id="boton-pago">FINALIZAR COMPRA
-                </button> 
+                </button>
             </a>
 
             <a href="#" class="boton boton-secundario ancho-completo mt-2">
