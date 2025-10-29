@@ -42,7 +42,7 @@
                         <!-- Botón de Login -->
                         <?php if (isset($_SESSION['usuario'])): ?>
                             <!-- Usuario logueado -->
-                            <a href="mi-cuenta.php" class="header-boton" aria-label="Mi cuenta" title="Mi Cuenta">
+                            <a href="../pages/mi-cuenta.php" class="header-boton" aria-label="Mi cuenta" title="Mi Cuenta">
                                 <i class="fas fa-user"></i>
                             </a>
                             <a href="../pages/logout.php" class="header-boton" aria-label="Cerrar sesión" title="Cerrar Sesión">

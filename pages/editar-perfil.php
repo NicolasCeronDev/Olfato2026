@@ -5,37 +5,6 @@ include '../includes/DB/conexion_db.php';
 
 $usuario = $_SESSION['usuario'];
 
-// Obtener información del usuario
-$sql = "SELECT * FROM usuarios WHERE id_usuario = ?";
-$stmt = $conexion->prepare($sql);
-$stmt->bind_param("i", $usuario['id']);
-$stmt->execute();
-$datos_usuario = $stmt->get_result()->fetch_assoc();
-
-// Obtener pedidos del usuario
-$sql_pedidos = "SELECT * FROM ordenes WHERE email_cliente = ? ORDER BY fecha_orden DESC LIMIT 5";
-$stmt_pedidos = $conexion->prepare($sql_pedidos);
-$stmt_pedidos->bind_param("s", $usuario['email']);
-$stmt_pedidos->execute();
-$pedidos = $stmt_pedidos->get_result();
-
-// Contar total de pedidos
-$sql_total_pedidos = "SELECT COUNT(*) as total FROM ordenes WHERE email_cliente = ?";
-$stmt_total = $conexion->prepare($sql_total_pedidos);
-$stmt_total->bind_param("s", $usuario['email']);
-$stmt_total->execute();
-$total_pedidos = $stmt_total->get_result()->fetch_assoc()['total'];
-
-// Función para obtener el color del estado
-function getColorEstado($estado) {
-    switch(strtolower($estado)) {
-        case 'pendiente': return '#f39c12';
-        case 'enviado': return '#3498db';
-        case 'entregado': return '#27ae60';
-        case 'cancelado': return '#e74c3c';
-        default: return '#95a5a6';
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -198,70 +167,7 @@ function getColorEstado($estado) {
                 </ul>
             </div>
             
-            <!-- Contenido Principal -->
-            <div class="cuenta-contenido">
-                <h2 style="color: var(--color-dorado); margin-bottom: 10px;">Resumen de tu Cuenta</h2>
-                <p style="color: var(--color-gris-claro); margin-bottom: 30px;">
-                    Aquí puedes ver tu actividad reciente y acceder a todas las opciones de tu cuenta.
-                </p>
-                
-                <div class="resumen-cards">
-                    <div class="resumen-card dorado">
-                        <h3 style="margin: 0 0 10px 0;">Pedidos Realizados</h3>
-                        <p style="font-size: 2.5rem; margin: 0; font-weight: bold;"><?php echo $total_pedidos; ?></p>
-                    </div>
-                    
-                    <div class="resumen-card">
-                        <h3 style="margin: 0 0 10px 0; color: var(--color-dorado);">Miembro desde</h3>
-                        <p style="font-size: 1.3rem; margin: 0; color: var(--color-texto); font-weight: 600;">
-                            <?php echo date('d/m/Y', strtotime($datos_usuario['fecha_registro'])); ?>
-                        </p>
-                    </div>
-                    
-                    <div class="resumen-card">
-                        <h3 style="margin: 0 0 10px 0; color: var(--color-dorado);">Email</h3>
-                        <p style="font-size: 1rem; margin: 0; color: var(--color-texto);">
-                            <?php echo $usuario['email']; ?>
-                        </p>
-                    </div>
-                </div>
-                
-                <h3 style="color: var(--color-dorado); margin: 40px 0 20px;">📦 Últimos Pedidos</h3>
-                <?php if ($pedidos->num_rows > 0): ?>
-                    <?php while($pedido = $pedidos->fetch_assoc()): ?>
-                        <div class="pedido-item">
-                            <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <div>
-                                    <strong style="color: var(--color-texto); font-size: 1.1rem;">
-                                        Pedido #<?php echo $pedido['id_orden']; ?>
-                                    </strong>
-                                    <p style="color: var(--color-gris-claro); margin: 5px 0; font-size: 0.9rem;">
-                                        📅 <?php echo date('d/m/Y H:i', strtotime($pedido['fecha_orden'])); ?>
-                                    </p>
-                                    <p style="color: var(--color-dorado); font-weight: bold; margin: 5px 0;">
-                                        💰 Total: $<?php echo number_format($pedido['total_orden']); ?>
-                                    </p>
-                                </div>
-                                <span class="estado-badge" style="background: <?php echo getColorEstado($pedido['estado_orden']); ?>">
-                                    <?php echo ucfirst($pedido['estado_orden']); ?>
-                                </span>
-                            </div>
-                        </div>
-                    <?php endwhile; ?>
-                    <div style="text-align: center; margin-top: 25px;">
-                        <a href="mis-pedidos.php" class="boton boton-secundario">
-                            <i class="fas fa-list mr-2"></i> Ver todos mis pedidos
-                        </a>
-                    </div>
-                <?php else: ?>
-                    <div style="text-align: center; padding: 50px 20px; color: var(--color-gris-claro);">
-                        <div style="font-size: 3rem; margin-bottom: 15px;">📦</div>
-                        <p style="font-size: 1.2rem; margin-bottom: 15px;">Aún no has realizado pedidos</p>
-                        <a href="productos.php" class="boton">
-                            <i class="fas fa-shopping-bag mr-2"></i> ¡Descubre nuestros productos!
-                        </a>
-                    </div>
-                <?php endif; ?>
+           
             </div>
         </div>
     </section>
