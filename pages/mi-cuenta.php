@@ -12,17 +12,32 @@ $stmt->bind_param("i", $usuario['id']);
 $stmt->execute();
 $datos_usuario = $stmt->get_result()->fetch_assoc();
 
-// Obtener pedidos del usuario
-$sql_pedidos = "SELECT * FROM ordenes WHERE email_cliente = ? ORDER BY fecha_orden DESC LIMIT 5";
+// Obtener pedidos del usuario usando id_usuario (CONSULTA MEJORADA)
+$sql_pedidos = "SELECT 
+                    o.id_orden,
+                    o.fecha_orden,
+                    o.estado_orden,
+                    o.total_orden,
+                    o.metodo_pago,
+                    o.ciudad,
+                    o.barrio,
+                    COUNT(do.id_detalle_orden) as total_productos,
+                    SUM(do.cantidad) as total_items
+                FROM ordenes o
+                LEFT JOIN detalles_ordenes do ON o.id_orden = do.id_orden
+                WHERE o.id_usuario = ?
+                GROUP BY o.id_orden
+                ORDER BY o.fecha_orden DESC 
+                LIMIT 5";
 $stmt_pedidos = $conexion->prepare($sql_pedidos);
-$stmt_pedidos->bind_param("s", $usuario['email']);
+$stmt_pedidos->bind_param("i", $usuario['id']); // Cambiado a id_usuario
 $stmt_pedidos->execute();
 $pedidos = $stmt_pedidos->get_result();
 
-// Contar total de pedidos
-$sql_total_pedidos = "SELECT COUNT(*) as total FROM ordenes WHERE email_cliente = ?";
+// Contar total de pedidos usando id_usuario
+$sql_total_pedidos = "SELECT COUNT(*) as total FROM ordenes WHERE id_usuario = ?";
 $stmt_total = $conexion->prepare($sql_total_pedidos);
-$stmt_total->bind_param("s", $usuario['email']);
+$stmt_total->bind_param("i", $usuario['id']); // Cambiado a id_usuario
 $stmt_total->execute();
 $total_pedidos = $stmt_total->get_result()->fetch_assoc()['total'];
 
@@ -170,6 +185,24 @@ function getColorEstado($estado) {
             color: var(--color-fondo);
             font-weight: bold;
         }
+
+        .info-pedido {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--color-gris-claro);
+        }
+
+        .productos-count {
+            background: var(--color-dorado);
+            color: var(--color-fondo);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -245,6 +278,12 @@ function getColorEstado($estado) {
                                 <span class="estado-badge" style="background: <?php echo getColorEstado($pedido['estado_orden']); ?>">
                                     <?php echo ucfirst($pedido['estado_orden']); ?>
                                 </span>
+                            </div>
+                            <!-- NUEVA INFORMACIÓN: Cantidad de productos e items -->
+                            <div class="info-pedido">
+                                <span>📦 <?php echo $pedido['total_productos']; ?> productos</span>
+                                <span class="productos-count">🛒 <?php echo $pedido['total_items']; ?> items</span>
+                                <span>💳 <?php echo ucfirst($pedido['metodo_pago']); ?></span>
                             </div>
                         </div>
                     <?php endwhile; ?>
