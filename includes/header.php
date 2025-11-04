@@ -1,3 +1,7 @@
+<?php
+// includes/header.php
+include '../includes/DB/verificar_sesion.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 
