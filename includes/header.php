@@ -1,6 +1,5 @@
 <?php
-// includes/header.php
-include '../includes/DB/verificar_sesion.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">

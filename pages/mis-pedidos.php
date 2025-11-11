@@ -466,7 +466,7 @@ function getColorEstado($estado) {
                     </div>
                 <?php endif; ?>
             </div>
-        </div>
+        </div>      
     </section>
     
     <?php include '../includes/footer.php'; ?>
