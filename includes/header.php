@@ -17,17 +17,17 @@ session_start();
 
     <!-- Hojas de estilo -->
     <link rel="stylesheet" href="../assets/css/general.css"> <!-- Estilos globales -->
-    <link rel="stylesheet" href="../assets/css/componentes/header.css"><!-- Estilos del header -->
-    <link rel="stylesheet" href="../assets/css/componentes/login.css"> <!-- Estilos
+    <link rel="stylesheet" href="/olfato2026/assets/css/Componentes/header.css"><!-- Estilos del header -->
+    <link rel="stylesheet" href="../assets/css/componentes/login.css"> <!-- Estilos-->
 </head>
 
 <body>
-    <-- Cabecera principal -->
+    <!-- Cabecera principal -->
     <header class="cabecera">
         <div class="contenedor cabecera-contenido">
             <!-- Logo con imagen -->
             <div class="logo">
-                <img src="../assets/Contenido/Local/LogoSinfondo.png" alt="Olfato Perfumería" class="logo-imagen">
+                <img src="/olfato2026/assets/Contenido/Local/LogoSinfondo.png" alt="Olfato Perfumería" class="logo-imagen">
             </div>
 
             <!-- Navegación principal -->

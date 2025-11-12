@@ -11,11 +11,11 @@ if (!isset($_SESSION['usuario']) || !$_SESSION['usuario']['es_admin']) {
 if (isset($_POST['cambiar_estado'])) {
     $id_orden = intval($_POST['id_orden']);
     $nuevo_estado = $_POST['nuevo_estado'];
-    
+
     $sql = "UPDATE ordenes SET estado_orden = ? WHERE id_orden = ?";
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param("si", $nuevo_estado, $id_orden);
-    
+
     if ($stmt->execute()) {
         $_SESSION['mensaje'] = "Estado del pedido actualizado correctamente";
         $_SESSION['tipo_mensaje'] = "success";
@@ -23,7 +23,7 @@ if (isset($_POST['cambiar_estado'])) {
         $_SESSION['mensaje'] = "Error al actualizar el estado";
         $_SESSION['tipo_mensaje'] = "error";
     }
-    
+
     header('Location: index.php');
     exit();
 }
@@ -40,6 +40,7 @@ $resultado = $conexion->query($sql);
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -214,7 +215,7 @@ $resultado = $conexion->query($sql);
         }
 
         .admin-table tr:hover {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .badge {
@@ -225,10 +226,25 @@ $resultado = $conexion->query($sql);
             text-transform: uppercase;
         }
 
-        .badge-pendiente { background: #f39c12; color: white; }
-        .badge-enviado { background: #3498db; color: white; }
-        .badge-entregado { background: #27ae60; color: white; }
-        .badge-cancelado { background: #e74c3c; color: white; }
+        .badge-pendiente {
+            background: #f39c12;
+            color: white;
+        }
+
+        .badge-enviado {
+            background: #3498db;
+            color: white;
+        }
+
+        .badge-entregado {
+            background: #27ae60;
+            color: white;
+        }
+
+        .badge-cancelado {
+            background: #e74c3c;
+            color: white;
+        }
 
         .actions {
             display: flex;
@@ -354,13 +370,14 @@ $resultado = $conexion->query($sql);
         }
     </style>
 </head>
+
 <body>
     <div class="admin-container">
         <!-- Header del Admin -->
         <header class="admin-header">
             <nav class="admin-nav">
                 <div class="admin-logo">
-                    <img src="<?php echo ASSETS_PATH; ?>Contenido/Local/LogoSinfondo.png" alt="Olfato Perfumería">
+                    <img src="/olfato2026/assets/Contenido/Local/LogoSinfondo.png" alt="Olfato Perfumería">
                     <h1>Panel Admin</h1>
                 </div>
                 <div class="admin-user">
@@ -422,7 +439,7 @@ $resultado = $conexion->query($sql);
                         Total: <strong><?php echo $resultado->num_rows; ?></strong> pedidos
                     </div>
                 </div>
-                
+
                 <?php if (isset($_SESSION['mensaje'])): ?>
                     <div class="mensaje <?php echo $_SESSION['tipo_mensaje']; ?>">
                         <i class="fas fa-<?php echo $_SESSION['tipo_mensaje'] === 'success' ? 'check-circle' : 'exclamation-circle'; ?>"></i>
@@ -430,7 +447,7 @@ $resultado = $conexion->query($sql);
                     </div>
                     <?php unset($_SESSION['mensaje'], $_SESSION['tipo_mensaje']); ?>
                 <?php endif; ?>
-                
+
                 <div class="table-container">
                     <table class="admin-table">
                         <thead>
@@ -446,60 +463,60 @@ $resultado = $conexion->query($sql);
                         </thead>
                         <tbody>
                             <?php if ($resultado->num_rows > 0): ?>
-                                <?php while($pedido = $resultado->fetch_assoc()): ?>
-                                <tr>
-                                    <td>
-                                        <strong>#<?php echo $pedido['id_orden']; ?></strong>
-                                    </td>
-                                    <td>
-                                        <strong><?php echo htmlspecialchars($pedido['nombre_cliente']); ?></strong>
-                                        <br>
-                                        <small style="color: var(--color-gris-claro);">
-                                            <?php echo htmlspecialchars($pedido['email']); ?>
-                                        </small>
-                                    </td>
-                                    <td>
-                                        <?php echo date('d/m/Y H:i', strtotime($pedido['fecha_orden'])); ?>
-                                    </td>
-                                    <td>
-                                        <strong>$<?php echo number_format($pedido['total_orden']); ?></strong>
-                                        <br>
-                                        <small style="color: var(--color-gris-claro);">
-                                            <?php echo ucfirst($pedido['metodo_pago']); ?>
-                                        </small>
-                                    </td>
-                                    <td>
-                                        <?php echo $pedido['total_productos']; ?> productos
-                                        <br>
-                                        <small style="color: var(--color-gris-claro);">
-                                            <?php echo $pedido['total_items']; ?> items
-                                        </small>
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-<?php echo strtolower($pedido['estado_orden']); ?>">
-                                            <?php echo ucfirst($pedido['estado_orden']); ?>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <div class="actions">
-                                            <a href="ver.php?id=<?php echo $pedido['id_orden']; ?>" class="btn btn-secondary btn-sm">
-                                                <i class="fas fa-eye"></i> Ver
-                                            </a>
-                                            <form method="POST" action="" class="form-inline">
-                                                <input type="hidden" name="id_orden" value="<?php echo $pedido['id_orden']; ?>">
-                                                <select name="nuevo_estado" class="form-select" required>
-                                                    <option value="pendiente" <?php echo $pedido['estado_orden'] == 'pendiente' ? 'selected' : ''; ?>>Pendiente</option>
-                                                    <option value="enviado" <?php echo $pedido['estado_orden'] == 'enviado' ? 'selected' : ''; ?>>Enviado</option>
-                                                    <option value="entregado" <?php echo $pedido['estado_orden'] == 'entregado' ? 'selected' : ''; ?>>Entregado</option>
-                                                    <option value="cancelado" <?php echo $pedido['estado_orden'] == 'cancelado' ? 'selected' : ''; ?>>Cancelado</option>
-                                                </select>
-                                                <button type="submit" name="cambiar_estado" class="btn btn-primary btn-sm">
-                                                    <i class="fas fa-sync"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <?php while ($pedido = $resultado->fetch_assoc()): ?>
+                                    <tr>
+                                        <td>
+                                            <strong>#<?php echo $pedido['id_orden']; ?></strong>
+                                        </td>
+                                        <td>
+                                            <strong><?php echo htmlspecialchars($pedido['nombre_cliente']); ?></strong>
+                                            <br>
+                                            <small style="color: var(--color-gris-claro);">
+                                                <?php echo htmlspecialchars($pedido['email']); ?>
+                                            </small>
+                                        </td>
+                                        <td>
+                                            <?php echo date('d/m/Y H:i', strtotime($pedido['fecha_orden'])); ?>
+                                        </td>
+                                        <td>
+                                            <strong>$<?php echo number_format($pedido['total_orden']); ?></strong>
+                                            <br>
+                                            <small style="color: var(--color-gris-claro);">
+                                                <?php echo ucfirst($pedido['metodo_pago']); ?>
+                                            </small>
+                                        </td>
+                                        <td>
+                                            <?php echo $pedido['total_productos']; ?> productos
+                                            <br>
+                                            <small style="color: var(--color-gris-claro);">
+                                                <?php echo $pedido['total_items']; ?> items
+                                            </small>
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-<?php echo strtolower($pedido['estado_orden']); ?>">
+                                                <?php echo ucfirst($pedido['estado_orden']); ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="actions">
+                                                <a href="ver.php?id=<?php echo $pedido['id_orden']; ?>" class="btn btn-secondary btn-sm">
+                                                    <i class="fas fa-eye"></i> Ver
+                                                </a>
+                                                <form method="POST" action="" class="form-inline">
+                                                    <input type="hidden" name="id_orden" value="<?php echo $pedido['id_orden']; ?>">
+                                                    <select name="nuevo_estado" class="form-select" required>
+                                                        <option value="pendiente" <?php echo $pedido['estado_orden'] == 'pendiente' ? 'selected' : ''; ?>>Pendiente</option>
+                                                        <option value="enviado" <?php echo $pedido['estado_orden'] == 'enviado' ? 'selected' : ''; ?>>Enviado</option>
+                                                        <option value="entregado" <?php echo $pedido['estado_orden'] == 'entregado' ? 'selected' : ''; ?>>Entregado</option>
+                                                        <option value="cancelado" <?php echo $pedido['estado_orden'] == 'cancelado' ? 'selected' : ''; ?>>Cancelado</option>
+                                                    </select>
+                                                    <button type="submit" name="cambiar_estado" class="btn btn-primary btn-sm">
+                                                        <i class="fas fa-sync"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 <?php endwhile; ?>
                             <?php else: ?>
                                 <tr>
@@ -517,4 +534,5 @@ $resultado = $conexion->query($sql);
         </main>
     </div>
 </body>
+
 </html>

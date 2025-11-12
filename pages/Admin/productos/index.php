@@ -10,18 +10,18 @@ if (!isset($_SESSION['usuario']) || !$_SESSION['usuario']['es_admin']) {
 // Procesar eliminación de producto
 if (isset($_GET['eliminar'])) {
     $id_eliminar = intval($_GET['eliminar']);
-    
+
     // Primero eliminar los precios asociados
     $sql_eliminar_precios = "DELETE FROM precios_tamaños WHERE id_producto = ?";
     $stmt_precios = $conexion->prepare($sql_eliminar_precios);
     $stmt_precios->bind_param("i", $id_eliminar);
     $stmt_precios->execute();
-    
+
     // Luego eliminar el producto
     $sql_eliminar = "DELETE FROM productos WHERE id_producto = ?";
     $stmt = $conexion->prepare($sql_eliminar);
     $stmt->bind_param("i", $id_eliminar);
-    
+
     if ($stmt->execute()) {
         $_SESSION['mensaje'] = "Producto eliminado correctamente";
         $_SESSION['tipo_mensaje'] = "success";
@@ -29,7 +29,7 @@ if (isset($_GET['eliminar'])) {
         $_SESSION['mensaje'] = "Error al eliminar el producto";
         $_SESSION['tipo_mensaje'] = "error";
     }
-    
+
     header('Location: index.php');
     exit();
 }
@@ -46,6 +46,7 @@ $resultado = $conexion->query($sql);
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -224,12 +225,12 @@ $resultado = $conexion->query($sql);
         }
 
         .admin-table tr:hover {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .product-image {
-            width: 50px;
-            height: 50px;
+            width: 80px;
+            height: 80px;
             border-radius: 8px;
             object-fit: cover;
         }
@@ -321,13 +322,14 @@ $resultado = $conexion->query($sql);
         }
     </style>
 </head>
+
 <body>
     <div class="admin-container">
         <!-- Header del Admin -->
         <header class="admin-header">
             <nav class="admin-nav">
                 <div class="admin-logo">
-                    <img src="<?php echo ASSETS_PATH; ?>Contenido/Local/LogoSinfondo.png" alt="Olfato Perfumería">
+                    <img src="/olfato2026/assets/Contenido/Local/LogoSinfondo.png" alt="Olfato Perfumería" width="80px">
                     <h1>Panel Admin</h1>
                 </div>
                 <div class="admin-user">
@@ -357,7 +359,7 @@ $resultado = $conexion->query($sql);
                         <i class="fas fa-plus"></i> Agregar Producto
                     </a>
                 </div>
-                
+
                 <?php if (isset($_SESSION['mensaje'])): ?>
                     <div class="mensaje <?php echo $_SESSION['tipo_mensaje']; ?>">
                         <i class="fas fa-<?php echo $_SESSION['tipo_mensaje'] === 'success' ? 'check-circle' : 'exclamation-circle'; ?>"></i>
@@ -365,7 +367,7 @@ $resultado = $conexion->query($sql);
                     </div>
                     <?php unset($_SESSION['mensaje'], $_SESSION['tipo_mensaje']); ?>
                 <?php endif; ?>
-                
+
                 <div class="table-container">
                     <table class="admin-table">
                         <thead>
@@ -381,44 +383,44 @@ $resultado = $conexion->query($sql);
                         </thead>
                         <tbody>
                             <?php if ($resultado->num_rows > 0): ?>
-                                <?php while($producto = $resultado->fetch_assoc()): ?>
-                                <tr>
-                                    <td>
-                                        <img src="<?php echo ASSETS_PATH . $producto['imagen_url']; ?>" 
-                                             alt="<?php echo $producto['nombre']; ?>" 
-                                             class="product-image"
-                                             onerror="this.src='<?php echo ASSETS_PATH; ?>Contenido/Local/LogoSinfondo.png'">
-                                    </td>
-                                    <td>
-                                        <strong><?php echo htmlspecialchars($producto['nombre']); ?></strong>
-                                        <br>
-                                        <small style="color: var(--color-gris-claro);">
-                                            ID: <?php echo $producto['id_producto']; ?>
-                                        </small>
-                                    </td>
-                                    <td><?php echo htmlspecialchars($producto['nombre_categoria']); ?></td>
-                                    <td><?php echo htmlspecialchars($producto['nombre_genero_perfume']); ?></td>
-                                    <td>
-                                        <span class="<?php echo $producto['stock'] < 10 ? 'stock-low' : 'stock-ok'; ?>">
-                                            <?php echo $producto['stock']; ?> unidades
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <?php echo $producto['nombre_oferta'] ? htmlspecialchars($producto['nombre_oferta']) : 'Sin oferta'; ?>
-                                    </td>
-                                    <td>
-                                        <div class="actions">
-                                            <a href="editar.php?id=<?php echo $producto['id_producto']; ?>" class="btn btn-secondary btn-sm">
-                                                <i class="fas fa-edit"></i> Editar
-                                            </a>
-                                            <a href="index.php?eliminar=<?php echo $producto['id_producto']; ?>" 
-                                               class="btn btn-danger btn-sm"
-                                               onclick="return confirm('¿Estás seguro de que quieres eliminar este producto?')">
-                                                <i class="fas fa-trash"></i> Eliminar
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <?php while ($producto = $resultado->fetch_assoc()): ?>
+                                    <tr>
+                                        <td>
+                                            <img src="/olfato2026/assets/<?php echo $producto['imagen_url']; ?>"
+                                                alt="<?php echo $producto['nombre']; ?>"
+                                                class="product-image"
+                                                onerror="this.src='<?php echo ASSETS_PATH; ?>Contenido/Local/LogoSinfondo.png'">
+                                        </td>
+                                        <td>
+                                            <strong><?php echo htmlspecialchars($producto['nombre']); ?></strong>
+                                            <br>
+                                            <small style="color: var(--color-gris-claro);">
+                                                ID: <?php echo $producto['id_producto']; ?>
+                                            </small>
+                                        </td>
+                                        <td><?php echo htmlspecialchars($producto['nombre_categoria']); ?></td>
+                                        <td><?php echo htmlspecialchars($producto['nombre_genero_perfume']); ?></td>
+                                        <td>
+                                            <span class="<?php echo $producto['stock'] < 10 ? 'stock-low' : 'stock-ok'; ?>">
+                                                <?php echo $producto['stock']; ?> unidades
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <?php echo $producto['nombre_oferta'] ? htmlspecialchars($producto['nombre_oferta']) : 'Sin oferta'; ?>
+                                        </td>
+                                        <td>
+                                            <div class="actions">
+                                                <a href="editar.php?id=<?php echo $producto['id_producto']; ?>" class="btn btn-secondary btn-sm">
+                                                    <i class="fas fa-edit"></i> Editar
+                                                </a>
+                                                <a href="index.php?eliminar=<?php echo $producto['id_producto']; ?>"
+                                                    class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('¿Estás seguro de que quieres eliminar este producto?')">
+                                                    <i class="fas fa-trash"></i> Eliminar
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 <?php endwhile; ?>
                             <?php else: ?>
                                 <tr>
@@ -432,7 +434,7 @@ $resultado = $conexion->query($sql);
                         </tbody>
                     </table>
                 </div>
-                
+
                 <div style="margin-top: 30px; color: var(--color-gris-claro);">
                     <p>Total de productos: <strong><?php echo $resultado->num_rows; ?></strong></p>
                 </div>
@@ -440,4 +442,5 @@ $resultado = $conexion->query($sql);
         </main>
     </div>
 </body>
+
 </html>

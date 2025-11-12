@@ -1,10 +1,41 @@
 <?php
-// pages/admin/productos/agregar.php
+// pages/admin/productos/editar.php
 require_once '../../../includes/config.php';
 
 if (!isset($_SESSION['usuario']) || !$_SESSION['usuario']['es_admin']) {
     header('Location: ' . PAGES_PATH . 'login.php');
     exit();
+}
+
+if (!isset($_GET['id'])) {
+    header('Location: index.php');
+    exit();
+}
+
+$id_producto = intval($_GET['id']);
+
+// Obtener datos del producto
+$sql_producto = "SELECT * FROM productos WHERE id_producto = ?";
+$stmt_producto = $conexion->prepare($sql_producto);
+$stmt_producto->bind_param("i", $id_producto);
+$stmt_producto->execute();
+$producto = $stmt_producto->get_result()->fetch_assoc();
+
+if (!$producto) {
+    header('Location: index.php');
+    exit();
+}
+
+// Obtener precios del producto
+$sql_precios = "SELECT * FROM precios_tamaños WHERE id_producto = ?";
+$stmt_precios = $conexion->prepare($sql_precios);
+$stmt_precios->bind_param("i", $id_producto);
+$stmt_precios->execute();
+$precios_result = $stmt_precios->get_result();
+
+$precios = [];
+while ($precio = $precios_result->fetch_assoc()) {
+    $precios[$precio['tamaño']] = $precio['precio'];
 }
 
 // Obtener categorías y géneros para los select
@@ -25,79 +56,80 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_categoria = intval($_POST['id_categoria']);
     $stock = intval($_POST['stock']);
     $id_oferta = !empty($_POST['id_oferta']) ? intval($_POST['id_oferta']) : null;
-
+    
     // Precios
     $precio_30ml = floatval($_POST['precio_30ml']);
     $precio_60ml = floatval($_POST['precio_60ml']);
     $precio_100ml = floatval($_POST['precio_100ml']);
-
+    
     // Manejo de imagen
-    $imagen_url = 'Contenido/Perfumes/default.png';
-
+    $imagen_url = $producto['imagen_url']; // Mantener la imagen actual por defecto
+    
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === 0) {
         $extension = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
         $nombre_archivo = uniqid() . '.' . $extension;
         $ruta_destino = ROOT_PATH . '/assets/Contenido/Perfumes/' . $nombre_archivo;
-
+        
         if (move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta_destino)) {
             $imagen_url = 'Contenido/Perfumes/' . $nombre_archivo;
         }
     }
-
+    
     try {
         $conexion->begin_transaction();
-
-        // Insertar producto
-        $sql_producto = "INSERT INTO productos (nombre, descripcion, imagen_url, id_genero_perfume, id_categoria, stock, id_oferta) 
-                         VALUES (?, ?, ?, ?, ?, ?, ?)";
+        
+        // Actualizar producto
+        $sql_producto = "UPDATE productos SET nombre = ?, descripcion = ?, imagen_url = ?, 
+                         id_genero_perfume = ?, id_categoria = ?, stock = ?, id_oferta = ? 
+                         WHERE id_producto = ?";
         $stmt_producto = $conexion->prepare($sql_producto);
-        $stmt_producto->bind_param("sssiiii", $nombre, $descripcion, $imagen_url, $id_genero_perfume, $id_categoria, $stock, $id_oferta);
+        $stmt_producto->bind_param("sssiiiii", $nombre, $descripcion, $imagen_url, 
+                                  $id_genero_perfume, $id_categoria, $stock, $id_oferta, $id_producto);
         $stmt_producto->execute();
-
-        $id_producto = $conexion->insert_id;
-
-        // Insertar precios
-        $sql_precios = "INSERT INTO precios_tamaños (id_producto, tamaño, precio) VALUES (?, ?, ?)";
-        $stmt_precios = $conexion->prepare($sql_precios);
-
+        
+        // Actualizar precios
+        $sql_actualizar_precio = "UPDATE precios_tamaños SET precio = ? WHERE id_producto = ? AND tamaño = ?";
+        $stmt_precio = $conexion->prepare($sql_actualizar_precio);
+        
         if ($precio_30ml > 0) {
-            $stmt_precios->bind_param("isd", $id_producto, '30ml', $precio_30ml);
-            $stmt_precios->execute();
+            $stmt_precio->bind_param("dis", $precio_30ml, $id_producto, '30ml');
+            $stmt_precio->execute();
         }
-
+        
         if ($precio_60ml > 0) {
-            $stmt_precios->bind_param("isd", $id_producto, '60ml', $precio_60ml);
-            $stmt_precios->execute();
+            $stmt_precio->bind_param("dis", $precio_60ml, $id_producto, '60ml');
+            $stmt_precio->execute();
         }
-
+        
         if ($precio_100ml > 0) {
-            $stmt_precios->bind_param("isd", $id_producto, '100ml', $precio_100ml);
-            $stmt_precios->execute();
+            $stmt_precio->bind_param("dis", $precio_100ml, $id_producto, '100ml');
+            $stmt_precio->execute();
         }
-
+        
         $conexion->commit();
-
-        $_SESSION['mensaje'] = "Producto agregado correctamente";
+        
+        $_SESSION['mensaje'] = "Producto actualizado correctamente";
         $_SESSION['tipo_mensaje'] = "success";
         header('Location: index.php');
         exit();
+        
     } catch (Exception $e) {
         $conexion->rollback();
-        $error = "Error al agregar el producto: " . $e->getMessage();
+        $error = "Error al actualizar el producto: " . $e->getMessage();
     }
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Producto - Admin Olfato Perfumería</title>
+    <title>Editar Producto - Admin Olfato Perfumería</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap">
     <style>
+        /* ESTILOS IGUALES A agregar.php - solo cambia el título y algunos valores */
         :root {
             --color-fondo: #000000;
             --color-texto: #FFFFFF;
@@ -351,35 +383,60 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: var(--color-fondo);
         }
 
+        .current-image {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .current-image img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 10px;
+            border: 2px solid var(--color-dorado);
+        }
+
+        @media (max-width: 1024px) {
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .admin-sidebar {
+                position: static;
+            }
+            
+            .prices-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             .admin-main {
                 padding: 120px 15px 30px;
             }
-
+            
+            .admin-contenido {
+                padding: 25px;
+            }
+            
             .page-header {
                 flex-direction: column;
                 gap: 15px;
                 align-items: flex-start;
             }
-
-            .form-grid,
-            .prices-grid {
+            
+            .form-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                flex-wrap: wrap;
             }
         }
     </style>
 </head>
-
 <body>
     <div class="admin-container">
         <!-- Header del Admin -->
         <header class="admin-header">
             <nav class="admin-nav">
                 <div class="admin-logo">
+                    <!-- CAMBIO AQUÍ: Ruta absoluta para el logo -->
                     <img src="/olfato2026/assets/Contenido/Local/LogoSinfondo.png" alt="Olfato Perfumería">
                     <h1>Panel Admin</h1>
                 </div>
@@ -405,108 +462,121 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="content-card">
                 <div class="page-header">
-                    <h1 class="page-title">Agregar Producto</h1>
+                    <h1 class="page-title">Editar Producto</h1>
                     <a href="index.php" class="btn btn-secondary">
                         <i class="fas fa-arrow-left"></i> Volver a Productos
                     </a>
                 </div>
-
+                
                 <?php if (isset($error)): ?>
                     <div class="error-message">
                         <i class="fas fa-exclamation-circle"></i>
                         <?php echo $error; ?>
                     </div>
                 <?php endif; ?>
-
+                
                 <form method="POST" action="" enctype="multipart/form-data">
+                    <!-- Imagen actual -->
+                    <div class="current-image">
+                        <p><strong>Imagen actual:</strong></p>
+                        <img src="/olfato2026/assets/<?php echo $producto['imagen_url']; ?>" 
+                             alt="<?php echo $producto['nombre']; ?>"
+                             onerror="this.src='/olfato2026/assets/Contenido/Local/LogoSinfondo.png'">
+                    </div>
+                    
                     <div class="form-group">
                         <label for="nombre">Nombre del Producto *</label>
-                        <input type="text" id="nombre" name="nombre" required>
+                        <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($producto['nombre']); ?>" required>
                     </div>
-
+                    
                     <div class="form-group">
                         <label for="descripcion">Descripción *</label>
-                        <textarea id="descripcion" name="descripcion" required></textarea>
+                        <textarea id="descripcion" name="descripcion" required><?php echo htmlspecialchars($producto['descripcion']); ?></textarea>
                     </div>
-
+                    
                     <div class="form-group">
-                        <label for="imagen">Imagen del Producto</label>
+                        <label for="imagen">Nueva Imagen del Producto (Opcional)</label>
                         <input type="file" id="imagen" name="imagen" accept="image/*">
                         <small style="color: var(--color-gris-claro); margin-top: 5px; display: block;">
-                            Formatos aceptados: JPG, PNG, GIF. Tamaño máximo: 2MB
+                            Dejar vacío para mantener la imagen actual
                         </small>
                     </div>
-
+                    
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="id_genero_perfume">Género *</label>
                             <select id="id_genero_perfume" name="id_genero_perfume" required>
                                 <option value="">Seleccionar género</option>
-                                <?php while ($genero = $generos->fetch_assoc()): ?>
-                                    <option value="<?php echo $genero['id_genero_perfume']; ?>">
+                                <?php while($genero = $generos->fetch_assoc()): ?>
+                                    <option value="<?php echo $genero['id_genero_perfume']; ?>" 
+                                        <?php echo $genero['id_genero_perfume'] == $producto['id_genero_perfume'] ? 'selected' : ''; ?>>
                                         <?php echo htmlspecialchars($genero['nombre_genero_perfume']); ?>
                                     </option>
                                 <?php endwhile; ?>
                             </select>
                         </div>
-
+                        
                         <div class="form-group">
                             <label for="id_categoria">Categoría *</label>
                             <select id="id_categoria" name="id_categoria" required>
                                 <option value="">Seleccionar categoría</option>
-                                <?php while ($categoria = $categorias->fetch_assoc()): ?>
-                                    <option value="<?php echo $categoria['id_categoria']; ?>">
+                                <?php while($categoria = $categorias->fetch_assoc()): ?>
+                                    <option value="<?php echo $categoria['id_categoria']; ?>" 
+                                        <?php echo $categoria['id_categoria'] == $producto['id_categoria'] ? 'selected' : ''; ?>>
                                         <?php echo htmlspecialchars($categoria['nombre_categoria']); ?>
                                     </option>
                                 <?php endwhile; ?>
                             </select>
                         </div>
                     </div>
-
+                    
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="stock">Stock *</label>
-                            <input type="number" id="stock" name="stock" min="0" required>
+                            <input type="number" id="stock" name="stock" min="0" value="<?php echo $producto['stock']; ?>" required>
                         </div>
-
+                        
                         <div class="form-group">
                             <label for="id_oferta">Oferta (Opcional)</label>
                             <select id="id_oferta" name="id_oferta">
                                 <option value="">Sin oferta</option>
-                                <?php while ($oferta = $ofertas->fetch_assoc()): ?>
-                                    <option value="<?php echo $oferta['id_oferta']; ?>">
+                                <?php while($oferta = $ofertas->fetch_assoc()): ?>
+                                    <option value="<?php echo $oferta['id_oferta']; ?>" 
+                                        <?php echo $oferta['id_oferta'] == $producto['id_oferta'] ? 'selected' : ''; ?>>
                                         <?php echo htmlspecialchars($oferta['nombre_oferta']); ?> (<?php echo $oferta['valor_descuento']; ?>%)
                                     </option>
                                 <?php endwhile; ?>
                             </select>
                         </div>
                     </div>
-
+                    
                     <div class="form-group">
                         <label>Precios por Tamaño *</label>
                         <div class="prices-grid">
                             <div class="price-item">
                                 <label for="precio_30ml">30ml</label>
-                                <input type="number" id="precio_30ml" name="precio_30ml" min="0" step="0.01" required>
+                                <input type="number" id="precio_30ml" name="precio_30ml" min="0" step="0.01" 
+                                       value="<?php echo $precios['30ml'] ?? 0; ?>" required>
                             </div>
                             <div class="price-item">
                                 <label for="precio_60ml">60ml</label>
-                                <input type="number" id="precio_60ml" name="precio_60ml" min="0" step="0.01" required>
+                                <input type="number" id="precio_60ml" name="precio_60ml" min="0" step="0.01" 
+                                       value="<?php echo $precios['60ml'] ?? 0; ?>" required>
                             </div>
                             <div class="price-item">
                                 <label for="precio_100ml">100ml</label>
-                                <input type="number" id="precio_100ml" name="precio_100ml" min="0" step="0.01" required>
+                                <input type="number" id="precio_100ml" name="precio_100ml" min="0" step="0.01" 
+                                       value="<?php echo $precios['100ml'] ?? 0; ?>" required>
                             </div>
                         </div>
                     </div>
-
+                    
                     <button type="submit" class="btn-submit">
-                        <i class="fas fa-save"></i> Guardar Producto
+                        <i class="fas fa-save"></i> Actualizar Producto
                     </button>
                 </form>
             </div>
         </main>
     </div>
 </body>
-
 </html>
