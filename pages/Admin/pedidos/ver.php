@@ -469,7 +469,7 @@ $detalles_pago = json_decode($pedido['detalles_pago'] ?? '{}', true);
                         <?php if ($detalles->num_rows > 0): ?>
                             <?php while ($producto = $detalles->fetch_assoc()): ?>
                                 <div class="product-item">
-                                    <img src="<?php echo ASSETS_PATH . $producto['imagen_url']; ?>"
+                                    <img src="/olfato2026/assets/<?php echo $producto['imagen_url']; ?>"
                                         alt="<?php echo $producto['nombre']; ?>"
                                         class="product-image"
                                         onerror="this.src='<?php echo ASSETS_PATH; ?>Contenido/Local/LogoSinfondo.png'">

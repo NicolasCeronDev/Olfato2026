@@ -10,6 +10,9 @@ $script_path = dirname($_SERVER['SCRIPT_NAME']);
 define('BASE_URL', $protocol . '://' . $host . $script_path);
 define('ROOT_PATH', dirname(__DIR__));
 
+// Ruta absoluta para assets (ajusta '/olfato2026' según tu estructura de carpetas)
+define('ASSETS_BASE', '/olfato2026/assets/');
+
 // Detectar si estamos en el admin
 $current_script = $_SERVER['SCRIPT_NAME'];
 define('IS_ADMIN', strpos($current_script, '/admin/') !== false);
